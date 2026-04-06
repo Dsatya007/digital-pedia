@@ -117,6 +117,14 @@
             .freebies-grid { grid-template-columns: 1fr; }
             .freebie-capture { flex-direction: column; }
             .freebie-capture input { margin-bottom: 0.5rem; }
+            /* Ensure all interactive elements meet 44px minimum touch target */
+            .btn, button, a.btn { min-height: 44px; }
+            .freebie-capture .btn { min-height: 44px; min-width: 44px; }
+            #mobile-menu-btn { min-height: 44px; min-width: 44px; padding: 8px; }
+            .comparison-table td .btn { min-height: 44px; }
+            .exit-submit-btn { min-height: 44px; }
+            .sticky-cta-btn { min-height: 44px; }
+            .hero-cta { min-height: 44px; }
         }
 
         /* Free Downloads Section */
