@@ -94,7 +94,23 @@
             .stats { flex-direction: column; gap: 1rem; }
             .email-form { flex-direction: column; }
             .nav-links { display: none; }
+            .freebies-grid { grid-template-columns: 1fr; }
+            .freebie-capture { flex-direction: column; }
+            .freebie-capture input { margin-bottom: 0.5rem; }
         }
+
+        /* Free Downloads Section */
+        .free-downloads { padding: 4rem 2rem; background: #f0fdf4; }
+        .freebies-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+        .freebie-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; display: flex; flex-direction: column; }
+        .freebie-card:hover { border-color: var(--accent); box-shadow: 0 8px 25px rgba(16,185,129,0.12); }
+        .freebie-badge { position: absolute; top: 1rem; right: 1rem; background: var(--accent); color: #fff; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600; }
+        .freebie-content h3 { font-size: 1.1rem; margin-bottom: 0.5rem; padding-right: 4rem; }
+        .freebie-content p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+        .freebie-capture { display: flex; gap: 0.5rem; margin-top: auto; }
+        .freebie-capture input { flex: 1; padding: 0.6rem 0.75rem; border: 1px solid var(--border); border-radius: 6px; font-size: 0.9rem; }
+        .freebie-capture input:focus { outline: none; border-color: var(--accent); }
+        .freebie-msg { color: var(--accent); font-size: 0.8rem; margin-top: 0.5rem; display: none; }
 
         /* Social Proof Counter */
         .social-proof-bar {
@@ -339,6 +355,78 @@
         </div>
     </section>
 
+    <section class="free-downloads" id="free-downloads">
+        <div class="section-header"><h2>Free Downloads -- Grab These Before They're Gone</h2><p>Enter your email to unlock instant access. We'll also send you new freebies when we drop them.</p></div>
+        <div class="freebies-grid">
+            <!-- Freebie 1: AI Workflow Scorecard -->
+            <div class="freebie-card">
+                <div class="freebie-badge">Free</div>
+                <div class="freebie-content">
+                    <h3>AI Workflow Scorecard</h3>
+                    <p>How much time are you wasting without AI? Score your current setup in 2 minutes and find out exactly how many hours you're bleeding each month.</p>
+                    <div class="freebie-capture">
+                        <input type="email" class="freebie-email" data-freebie="ai-workflow-scorecard" placeholder="your@email.com">
+                        <button class="btn btn-solid btn-download" onclick="unlockFreebie('ai-workflow-scorecard.pdf', this, event)">Get Scorecard</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Freebie 2: Solopreneur Starter Checklist -->
+            <div class="freebie-card">
+                <div class="freebie-badge">Free</div>
+                <div class="freebie-content">
+                    <h3>Solopreneur Starter Checklist</h3>
+                    <p>50-point checklist covering legal, branding, tools, marketing, and finance. Everything you need to launch a digital business -- no guesswork.</p>
+                    <div class="freebie-capture">
+                        <input type="email" class="freebie-email" data-freebie="solopreneur-checklist" placeholder="your@email.com">
+                        <button class="btn btn-solid btn-download" onclick="unlockFreebie('solopreneur-starter-checklist.pdf', this, event)">Get Checklist</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Freebie 3: Top 5 ChatGPT Prompts -->
+            <div class="freebie-card">
+                <div class="freebie-badge">Free</div>
+                <div class="freebie-content">
+                    <h3>Top 5 ChatGPT Prompts for Business Owners</h3>
+                    <p>Copy-paste ready prompts that automate your busiest tasks. Business owners swear by #3 -- try them all and watch what happens.</p>
+                    <div class="freebie-capture">
+                        <input type="email" class="freebie-email" data-freebie="chatgpt-prompts" placeholder="your@email.com">
+                        <button class="btn btn-solid btn-download" onclick="unlockFreebie('top-5-chatgpt-prompts.pdf', this, event)">Get Prompts</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Freebie 4: Side Hustle Income Tracker -->
+            <div class="freebie-card">
+                <div class="freebie-badge">Free</div>
+                <div class="freebie-content">
+                    <h3>Side Hustle Income Tracker</h3>
+                    <p>Simple spreadsheet template to track your side hustle income and expenses. Pre-formatted with auto-calculations and charts so you always know your numbers.</p>
+                    <div class="freebie-capture">
+                        <input type="email" class="freebie-email" data-freebie="income-tracker" placeholder="your@email.com">
+                        <button class="btn btn-solid btn-download" onclick="unlockFreebie('side-hustle-income-tracker.pdf', this, event)">Get Tracker</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Freebie 5: AI Tools Comparison Chart -->
+            <div class="freebie-card">
+                <div class="freebie-badge">Free</div>
+                <div class="freebie-content">
+                    <h3>AI Tools Comparison Chart 2025</h3>
+                    <p>20+ AI tools compared side by side -- writing, design, coding, marketing, automation. See pricing, features, and best use cases in one glance.</p>
+                    <div class="freebie-capture">
+                        <input type="email" class="freebie-email" data-freebie="ai-tools-comparison" placeholder="your@email.com">
+                        <button class="btn btn-solid btn-download" onclick="unlockFreebie('ai-tools-comparison-2025.pdf', this, event)">Get Chart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="freebies-footer" style="text-align:center; margin-top:2rem; color:var(--text-muted); font-size:0.9rem;">Your email stays private. No spam, ever. We only share new freebies and occasional updates.</p>
+    </section>
+
+
     <section class="bundle" id="bundle">
         <h2>Digital Product Starter Bundle</h2>
         <p>Cheat Sheet + 25 Templates + 30 Frameworks + Playbook -- Everything you need</p>
@@ -509,6 +597,53 @@
                 });
             }
         })();
+
+        // ============================================================
+        // FREEBIE EMAIL CAPTURE & DOWNLOAD UNLOCK
+        // ============================================================
+        function unlockFreebie(pdfFilename, btn, event) {
+            event.preventDefault();
+            var card = btn.closest('.freebie-card');
+            var input = card.querySelector('.freebie-email');
+            var email = input.value.trim();
+
+            if (!email || email.indexOf('@') === -1) {
+                input.style.borderColor = '#ef4444';
+                input.setAttribute('placeholder', 'Please enter a valid email');
+                input.value = '';
+                return;
+            }
+
+            // Store locally (same pattern as email-capture-form)
+            var signup = {
+                type: 'freebie_download',
+                email: email,
+                freebie: pdfFilename,
+                source: localStorage.getItem('dp_utm_params') ? JSON.parse(localStorage.getItem('dp_utm_params')).utm_source || 'organic' : 'organic',
+                timestamp: new Date().toISOString()
+            };
+            var signups = JSON.parse(localStorage.getItem('dp_signups') || '[]');
+            signups.push(signup);
+            localStorage.setItem('dp_signups', JSON.stringify(signups));
+
+            // Update button state
+            btn.textContent = 'Downloading...';
+            btn.style.background = '#10b981';
+            btn.disabled = true;
+            input.style.borderColor = '#10b981';
+            input.disabled = true;
+
+            // Trigger download
+            setTimeout(function() {
+                var link = document.createElement('a');
+                link.href = pdfFilename;
+                link.download = pdfFilename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                btn.textContent = 'Downloaded!';
+            }, 500);
+        }
 
         // ============================================================
         // SOCIAL PROOF - LIVE VISITOR & PURCHASE COUNTERS
