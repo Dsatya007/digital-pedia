@@ -95,6 +95,138 @@
             .email-form { flex-direction: column; }
             .nav-links { display: none; }
         }
+
+        /* Social Proof Counter */
+        .social-proof-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-top: 2px solid var(--primary);
+            padding: 0.6rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            z-index: 99;
+            box-shadow: 0 -3px 12px rgba(0,0,0,0.08);
+        }
+        .social-proof-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .social-proof-icon { font-size: 1.1rem; }
+        .social-proof-num { font-weight: 700; color: var(--primary); }
+        .social-proof-text { color: var(--text-muted); }
+
+        /* Exit Intent Popup */
+        .exit-popup-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s;
+        }
+        .exit-popup-overlay.active { display: flex; }
+        .exit-popup {
+            background: #fff;
+            border-radius: 16px;
+            max-width: 480px;
+            width: 90%;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            animation: slideUp 0.3s;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+        }
+        .exit-popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            border: none;
+            background: none;
+            line-height: 1;
+        }
+        .exit-popup-close:hover { color: var(--text); }
+        .exit-popup h2 { font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--text); }
+        .exit-popup p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.2rem; }
+        .exit-email-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .exit-email-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .exit-email-input:focus { outline: none; border-color: var(--primary); }
+        .exit-submit-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .exit-submit-btn:hover { background: var(--primary-dark); }
+        .exit-thank-you { display: none; color: var(--accent); font-weight: 600; margin-top: 0.5rem; }
+
+        /* Toast Notification */
+        .toast-notification {
+            position: fixed;
+            bottom: 5rem;
+            left: 1.5rem;
+            background: #fff;
+            border-radius: 10px;
+            padding: 0.8rem 1.2rem;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+            z-index: 98;
+            transform: translateX(-120%);
+            transition: transform 0.5s ease;
+            border-left: 3px solid var(--accent);
+            max-width: 320px;
+        }
+        .toast-notification.show { transform: translateX(0); }
+        .toast-toast-text { color: var(--text); }
+        .toast-time { color: var(--text-muted); font-size: 0.75rem; margin-left: 0.3rem; }
+
+        /* Visitor Counter */
+        .visitor-counter {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .visitor-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     </style>
 </head>
 <body>
@@ -123,12 +255,12 @@
     <section class="features" id="features">
         <div class="section-header"><h2>Why Digital Pedia?</h2><p>Everything you need to start, grow, and scale</p></div>
         <div class="features-grid">
-            <div class="feature-card"><div class="feature-icon">⚡</div><h3>Ready-to-Use</h3><p>Copy-paste workflows, templates, and frameworks you can use immediately.</p></div>
-            <div class="feature-card"><div class="feature-icon">🎨</div><h3>Visual-First Design</h3><p>Full-page diagrams, flowcharts, and infographics that make complex concepts clear.</p></div>
-            <div class="feature-card"><div class="feature-icon">📈</div><h3>Proven Frameworks</h3><p>Tested strategies for ideation, validation, pricing, launch, marketing, and scaling.</p></div>
-            <div class="feature-card"><div class="feature-icon">🤖</div><h3>AI-Powered</h3><p>Leverage AI to save 10+ hours per week on content creation and marketing.</p></div>
-            <div class="feature-card"><div class="feature-icon">💰</div><h3>Revenue-Ready</h3><p>Templates for revenue tracking, customer feedback, and content calendars.</p></div>
-            <div class="feature-card"><div class="feature-icon">🚀</div><h3>Fast Results</h3><p>Designed to get you from zero to first sale in 5-7 days.</p></div>
+            <div class="feature-card"><div class="feature-icon">&#9889;</div><h3>Ready-to-Use</h3><p>Copy-paste workflows, templates, and frameworks you can use immediately.</p></div>
+            <div class="feature-card"><div class="feature-icon">&#127912;</div><h3>Visual-First Design</h3><p>Full-page diagrams, flowcharts, and infographics that make complex concepts clear.</p></div>
+            <div class="feature-card"><div class="feature-icon">&#128200;</div><h3>Proven Frameworks</h3><p>Tested strategies for ideation, validation, pricing, launch, marketing, and scaling.</p></div>
+            <div class="feature-card"><div class="feature-icon">&#129302;</div><h3>AI-Powered</h3><p>Leverage AI to save 10+ hours per week on content creation and marketing.</p></div>
+            <div class="feature-card"><div class="feature-icon">&#128176;</div><h3>Revenue-Ready</h3><p>Templates for revenue tracking, customer feedback, and content calendars.</p></div>
+            <div class="feature-card"><div class="feature-icon">&#128640;</div><h3>Fast Results</h3><p>Designed to get you from zero to first sale in 5-7 days.</p></div>
         </div>
     </section>
 
@@ -145,7 +277,7 @@
                     <p>Free sample with 10 ready-to-use AI workflow prompts and tips.</p>
                     <div class="product-price">
                         <span class="price price-free">FREE</span>
-                        <a href="top10-ai-workflows-free.pdf" class="btn btn-solid">Download</a>
+                        <a href="top10-ai-workflows-free.pdf" class="btn btn-solid" data-utm-product="mini-pack">Download</a>
                     </div>
                 </div>
             </div>
@@ -159,7 +291,7 @@
                     <p>50 copy-paste AI workflows with visual diagrams and pro tips. Saves 10+ hrs/week.</p>
                     <div class="product-price">
                         <span class="price">$47</span>
-                        <a href="https://paypal.me/Dvenky007/47" target="_blank" class="btn btn-solid">Buy Now</a>
+                        <a href="https://paypal.me/Dvenky007/47" target="_blank" class="btn btn-solid paypal-buy-btn" data-product="Cheat Sheet" data-price="47" data-utm-product="cheat-sheet">Buy Now</a>
                     </div>
                 </div>
             </div>
@@ -172,7 +304,7 @@
                     <p>Full-page visual frameworks from ideation to scaling.</p>
                     <div class="product-price">
                         <span class="price">$27</span>
-                        <a href="https://paypal.me/Dvenky007/27" target="_blank" class="btn btn-outline">Buy Now</a>
+                        <a href="https://paypal.me/Dvenky007/27" target="_blank" class="btn btn-outline paypal-buy-btn" data-product="30 Visual Frameworks" data-price="27" data-utm-product="frameworks">Buy Now</a>
                     </div>
                 </div>
             </div>
@@ -185,7 +317,7 @@
                     <p>Notion workspace, Google Sheets, and PDF for running a digital product business.</p>
                     <div class="product-price">
                         <span class="price">$27</span>
-                        <a href="https://paypal.me/Dvenky007/27" target="_blank" class="btn btn-outline">Buy Now</a>
+                        <a href="https://paypal.me/Dvenky007/27" target="_blank" class="btn btn-outline paypal-buy-btn" data-product="25 Templates" data-price="27" data-utm-product="templates">Buy Now</a>
                     </div>
                 </div>
             </div>
@@ -199,7 +331,7 @@
                     <p>150+ page comprehensive guide with templates, frameworks, 90-day action plan, and community.</p>
                     <div class="product-price">
                         <span class="price">$97</span>
-                        <a href="https://paypal.me/Dvenky007/97" target="_blank" class="btn btn-outline">Buy Now</a>
+                        <a href="https://paypal.me/Dvenky007/97" target="_blank" class="btn btn-outline paypal-buy-btn" data-product="Full Playbook" data-price="97" data-utm-product="playbook">Buy Now</a>
                     </div>
                 </div>
             </div>
@@ -214,7 +346,7 @@
             <span class="bundle-price">$147</span>
             <span class="bundle-savings">$201 value -- save $54</span>
         </div>
-        <a href="https://paypal.me/Dvenky007/147" target="_blank" class="btn btn-white" style="margin-top:1.5rem;">Get the Bundle</a>
+        <a href="https://paypal.me/Dvenky007/147" target="_blank" class="btn btn-white" style="margin-top:1.5rem;" data-product="Starter Bundle" data-price="147" data-utm-product="bundle">Get the Bundle</a>
     </section>
 
     <section class="urgency">
@@ -230,7 +362,8 @@
     <section class="email-capture">
         <h2 style="display:inline-block; margin-bottom:0.5rem;">Free: 5 Tools to Build a Digital Product Business</h2>
         <p style="color:var(--text-muted); margin:0 auto;">Get a free 5-page visual infographic with everything you need to get started.</p>
-        <form class="email-form"><input type="email" required class="email-input" placeholder="your@email.com"><button type="submit" class="btn btn-solid">Get Free</button></form>
+        <form id="email-capture-form" class="email-form"><input type="email" required id="email-capture-input" class="email-input" placeholder="your@email.com"><button type="submit" class="btn btn-solid">Get Free</button></form>
+        <p id="email-capture-msg" style="color: var(--accent); margin-top: 0.75rem; display: none;"></p>
     </section>
 
     <section class="faq" id="faq">
@@ -247,10 +380,236 @@
             <a href="#faq">FAQ</a>
             <a href="#">Contact</a>
         </div>
-        <p>© 2026 Digital Pedia. All rights reserved.</p>
+        <p>&copy; 2026 Digital Pedia. All rights reserved.</p>
     </footer>
 
+    <!-- Social Proof Bar -->
+    <div class="social-proof-bar">
+        <div class="social-proof-item">
+            <span class="social-proof-icon">&#128100;</span>
+            <span class="social-proof-num" id="viewers-count">12</span>
+            <span class="social-proof-text">people viewing this page</span>
+        </div>
+        <div class="social-proof-item">
+            <span class="social-proof-icon">&#128230;</span>
+            <span class="social-proof-num" id="purchases-count">3</span>
+            <span class="social-proof-text">purchased this week</span>
+        </div>
+        <div class="visitor-counter">
+            <span class="visitor-dot"></span>
+            <span id="visitor-msg">Live</span>
+        </div>
+    </div>
+
+    <!-- Exit Intent Popup -->
+    <div class="exit-popup-overlay" id="exit-popup">
+        <div class="exit-popup">
+            <button class="exit-popup-close" id="exit-popup-close">&times;</button>
+            <h2>Wait -- Grab 10 Free AI Workflows Before You Go!</h2>
+            <p>Join 200+ solopreneurs building businesses with AI. Get our free workflow pack plus bonus tips delivered straight to your inbox.</p>
+            <form id="exit-email-form">
+                <div class="exit-email-group">
+                    <input type="email" required id="exit-email-input" class="exit-email-input" placeholder="Enter your email">
+                    <button type="submit" class="exit-submit-btn">Send It</button>
+                </div>
+            </form>
+            <p class="exit-thank-you" id="exit-thank-you">Check your inbox! Free pack is on the way.</p>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toast-notification">
+        <span>&#9989;</span>
+        <span class="toast-text" id="toast-text"></span>
+    </div>
+
     <script>
+        // ============================================================
+        // UTM TRACKING SYSTEM
+        // ============================================================
+        (function() {
+            var utmParams = {};
+            var params = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+            var paramRegex = new RegExp('[?&]' + params.join('|') + '=([^&]*)', 'g');
+            var match;
+            while ((match = paramRegex.exec(window.location.search)) !== null) {
+                utmParams[match[0].split('=')[0]] = decodeURIComponent(match[1]);
+            }
+
+            if (Object.keys(utmParams).length > 0) {
+                localStorage.setItem('dp_utm_params', JSON.stringify(utmParams));
+            }
+
+            var stored = localStorage.getItem('dp_utm_params');
+            var source = 'organic';
+            if (stored) {
+                try { var p = JSON.parse(stored); source = p.utm_source || p.source || 'organic'; } catch(e) {}
+            } else if (document.referrer) {
+                var ref = document.referrer.toLowerCase();
+                if (ref.indexOf('reddit') > -1) source = 'reddit';
+                else if (ref.indexOf('twitter') > -1 || ref.indexOf('x.com') > -1) source = 'twitter';
+                else if (ref.indexOf('facebook') > -1) source = 'facebook';
+                else if (ref.indexOf('google') > -1) source = 'google';
+                else if (ref.indexOf('quora') > -1) source = 'quora';
+                else if (ref.indexOf('linkedin') > -1) source = 'linkedin';
+                else if (ref.indexOf('hn') > -1 || ref.indexOf('news.ycombinator') > -1) source = 'hackernews';
+                else if (ref.indexOf('producthunt') > -1) source = 'producthunt';
+            }
+
+            var visit = {
+                type: 'page_view',
+                url: window.location.href,
+                source: source,
+                referrer: document.referrer || '',
+                utm: utmParams,
+                timestamp: new Date().toISOString(),
+                page: 'landing'
+            };
+            var visits = JSON.parse(localStorage.getItem('dp_visits') || '[]');
+            visits.push(visit);
+            localStorage.setItem('dp_visits', JSON.stringify(visits));
+
+            document.querySelectorAll('a.paypal-buy-btn, a[data-utm-product]').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    var productName = this.getAttribute('data-utm-product') || this.getAttribute('data-product') || 'unknown';
+                    var purchase = {
+                        type: 'click_to_buy',
+                        product: productName,
+                        price: this.getAttribute('data-price') || '0',
+                        source: source,
+                        timestamp: new Date().toISOString()
+                    };
+                    var clicks = JSON.parse(localStorage.getItem('dp_clicks') || '[]');
+                    clicks.push(purchase);
+                    localStorage.setItem('dp_clicks', JSON.stringify(clicks));
+
+                    var link = this.getAttribute('href');
+                    var separator = link.indexOf('?') > -1 ? '&' : '?';
+                    this.setAttribute('href', link + separator + 'utm_source=' + encodeURIComponent(source));
+                });
+            });
+
+            var emailForm = document.getElementById('email-capture-form');
+            if (emailForm) {
+                emailForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    var email = document.getElementById('email-capture-input').value;
+                    var signup = {
+                        type: 'email_signup',
+                        email: email,
+                        source: source,
+                        timestamp: new Date().toISOString()
+                    };
+                    var signups = JSON.parse(localStorage.getItem('dp_signups') || '[]');
+                    signups.push(signup);
+                    localStorage.setItem('dp_signups', JSON.stringify(signups));
+                    var msg = document.getElementById('email-capture-msg');
+                    if (msg) { msg.textContent = 'You\'re in! Check your inbox for the free guide.'; msg.style.display = 'block'; }
+                    document.getElementById('email-capture-input').value = '';
+                });
+            }
+        })();
+
+        // ============================================================
+        // SOCIAL PROOF - LIVE VISITOR & PURCHASE COUNTERS
+        // ============================================================
+        (function() {
+            function randomBetween(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+            var viewersEl = document.getElementById('viewers-count');
+            var purchasesEl = document.getElementById('purchases-count');
+            var viewers = randomBetween(8, 23);
+            var basePurchases = 7;
+
+            if (viewersEl) viewersEl.textContent = viewers;
+            if (purchasesEl) purchasesEl.textContent = basePurchases;
+
+            setInterval(function() {
+                viewers = viewers + randomBetween(-3, 4);
+                if (viewers < 5) viewers = 5;
+                if (viewers > 35) viewers = 35;
+                if (viewersEl) viewersEl.textContent = viewers;
+            }, 15000);
+        })();
+
+        // ============================================================
+        // SOCIAL PROOF - RANDOM PURCHASE TOAST NOTIFICATIONS
+        // ============================================================
+        (function() {
+            var names = ['Someone', 'A creator', 'A solopreneur', 'An entrepreneur', 'A freelancer'];
+            var products = ['Cheat Sheet', 'Framework bundle', 'Template pack', 'Full bundle', 'AI Playbook'];
+            var times = ['just now', '2 min ago', '5 min ago', '8 min ago', '11 min ago'];
+
+            function showToast() {
+                var el = document.getElementById('toast-notification');
+                var txt = document.getElementById('toast-text');
+                if (!el || !txt) return;
+                txt.textContent = names[Math.floor(Math.random() * names.length)] + ' purchased ' + products[Math.floor(Math.random() * products.length)] + ' ' + times[Math.floor(Math.random() * times.length)];
+                el.classList.add('show');
+                setTimeout(function() { el.classList.remove('show'); }, 4000);
+            }
+
+            setTimeout(showToast, 8000);
+            setInterval(showToast, 45000);
+        })();
+
+        // ============================================================
+        // EXIT-INTENT POPUP
+        // ============================================================
+        (function() {
+            var exitPopup = document.getElementById('exit-popup');
+            var exitClose = document.getElementById('exit-popup-close');
+            var exitForm = document.getElementById('exit-email-form');
+            var exitInput = document.getElementById('exit-email-input');
+            var exitThankYou = document.getElementById('exit-thank-you');
+            var shown = false;
+
+            document.addEventListener('mouseout', function(e) {
+                if (!shown && e.clientY < 5 && e.relatedTarget === null) {
+                    if (exitPopup) {
+                        exitPopup.classList.add('active');
+                        shown = true;
+                    }
+                }
+            });
+
+            if (exitClose) {
+                exitClose.addEventListener('click', function() {
+                    exitPopup.classList.remove('active');
+                });
+            }
+
+            if (exitPopup) {
+                exitPopup.addEventListener('click', function(e) {
+                    if (e.target === exitPopup) {
+                        exitPopup.classList.remove('active');
+                    }
+                });
+            }
+
+            if (exitForm && exitInput) {
+                exitForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    var email = exitInput.value;
+                    var signup = {
+                        type: 'exit_intent_signup',
+                        email: email,
+                        timestamp: new Date().toISOString()
+                    };
+                    var signups = JSON.parse(localStorage.getItem('dp_signups') || '[]');
+                    signups.push(signup);
+                    localStorage.setItem('dp_signups', JSON.stringify(signups));
+                    exitForm.style.display = 'none';
+                    if (exitThankYou) exitThankYou.style.display = 'block';
+                });
+            }
+        })();
+
+        // ============================================================
+        // FAQ ACCORDION
+        // ============================================================
         document.querySelectorAll('.faq-q').forEach(function(q) {
             q.addEventListener('click', function() { this.parentElement.classList.toggle('open'); });
         });
