@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /videos/
+Sitemap: https://dsatya007.github.io/digital-pedia/sitemap.xml
