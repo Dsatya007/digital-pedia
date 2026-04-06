@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Pedia - AI Solopreneur Products</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --accent: #10b981;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+        body { font-family: system-ui, -apple-system, sans-serif; color: var(--text); line-height: 1.6; }
+        nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); z-index: 100; padding: 0.75rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.25rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 1.5rem; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+        .hero { padding: 8rem 2rem 4rem; text-align: center; background: linear-gradient(135deg, #f0f0ff 0%, #e0e7ff 100%); }
+        .hero h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; }
+        .hero h1 span { color: var(--primary); }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem; }
+        .hero-badge { display: inline-block; background: var(--accent); color: white; padding: 0.5rem 1.5rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; }
+        .hero-cta { display: inline-block; background: var(--primary); color: white; padding: 1rem 2.5rem; border-radius: 8px; text-decoration: none; font-size: 1.1rem; font-weight: 600; transition: all 0.2s; border: none; cursor: pointer; }
+        .hero-cta:hover { background: var(--primary-dark); transform: translateY(-2px); }
+        .stats { display: flex; justify-content: center; gap: 3rem; padding: 2rem; }
+        .stat { text-align: center; }
+        .stat-number { font-size: 2rem; font-weight: 800; color: var(--primary); }
+        .stat-label { font-size: 0.85rem; color: var(--text-muted); }
+        .features { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: 2rem; font-weight: 700; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .feature-card { padding: 1.5rem; border: 1px solid var(--border); border-radius: 12px; }
+        .feature-card:hover { border-color: var(--primary); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+        .feature-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .feature-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .feature-card p { color: var(--text-muted); font-size: 0.95rem; }
+        .products { padding: 4rem 2rem; background: var(--bg-alt); }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .product-card { background: var(--bg); border-radius: 16px; overflow: hidden; border: 1px solid var(--border); transition: all 0.2s; position: relative; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+        .product-badge { position: absolute; top: 1rem; right: 1rem; background: var(--accent); color: white; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600; z-index: 2; }
+        .product-img { width: 100%; height: 200px; object-fit: cover; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; }
+        .product-img img { width: 100%; height: 100%; object-fit: cover; }
+        .product-content { padding: 1.5rem; }
+        .product-category { font-size: 0.75rem; color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+        .product-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; line-height: 1.4; }
+        .product-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+        .product-price { display: flex; align-items: center; gap: 1rem; }
+        .price { font-size: 1.5rem; font-weight: 800; color: var(--text); }
+        .btn { display: inline-block; padding: 0.75rem 1.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-dark); }
+        .btn-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; }
+        .btn-outline:hover { background: var(--primary); color: white; }
+        .bundle-banner { background: linear-gradient(135deg, var(--primary) 0%, #9333ea 100%); padding: 3rem 2rem; text-align: center; color: white; }
+        .bundle-banner h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .bundle-banner p { font-size: 1rem; opacity: 0.9; margin-bottom: 1.5rem; }
+        .bundle-price { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; display: inline-block; }
+        .bundle-savings { text-decoration: line-through; opacity: 0.7; font-size: 1rem; margin-left: 1rem; }
+        .urgency { padding: 3rem 2rem; text-align: center; background: #fef3c7; }
+        .urgency h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .urgency p { color: var(--text-muted); max-width: 500px; margin: 0 auto 1.5rem; }
+        .faq { padding: 4rem 2rem; max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--border); }
+        .faq-question { padding: 1.5rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
+        .faq-question:hover { color: var(--primary); }
+        .faq-answer { display: none; color: var(--text-muted); padding: 0 0 1.5rem; }
+        .faq-item.active .faq-answer { display: block; }
+        .faq-item.active .faq-question { color: var(--primary); }
+        .email-capture { background: var(--bg-alt); padding: 4rem 2rem; text-align: center; }
+        .email-form { display: flex; max-width: 400px; margin: 1.5rem auto 0; gap: 0.5rem; }
+        .email-input { flex: 1; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; }
+        footer { background: var(--text); color: white; padding: 3rem 2rem; text-align: center; }
+        footer a { color: var(--primary); }
+        footer .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
+        footer p { opacity: 0.6; font-size: 0.85rem; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .stats { flex-direction: column; gap: 1.5rem; }
+            .email-form { flex-direction: column; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">Digital Pedia</a>
+        <div class="nav-links">
+            <a href="#products">Products</a>
+            <a href="#features">Features</a>
+            <a href="#faq">FAQ</a>
+            <a href="#bundle">Bundle</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-badge">Launch Pricing -- First 500 Buyers Get Bonus AI Prompts</div>
+        <h1>Build Your Digital Product<br>Business With <span>AI</span></h1>
+        <p>Ready-made cheat sheets, templates, and visual frameworks to launch and scale your digital product business. Start selling in days, not months.</p>
+        <a href="#products" class="hero-cta">Browse Products</a>
+        <div class="stats">
+            <div class="stat"><div class="stat-number">50+</div><div class="stat-label">AI Workflows</div></div>
+            <div class="stat"><div class="stat-number">25</div><div class="stat-label">Business Templates</div></div>
+            <div class="stat"><div class="stat-number">30</div><div class="stat-label">Visual Frameworks</div></div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>Why Digital Pedia?</h2>
+            <p>Everything you need to start, grow, and scale</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card"><div class="feature-icon">⚡</div><h3>Ready-to-Use</h3><p>No theory, no fluff. Just copy-paste workflows, templates, and frameworks you can use immediately.</p></div>
+            <div class="feature-card"><div class="feature-icon">🎨</div><h3>Visual-First Design</h3><p>Full-page diagrams, flowcharts, and infographics that make complex concepts crystal clear.</p></div>
+            <div class="feature-card"><div class="feature-icon">📈</div><h3>Proven Frameworks</h3><p>Tested strategies for ideation, validation, pricing, launch, marketing, and scaling.</p></div>
+            <div class="feature-card"><div class="feature-icon">🤖</div><h3>AI-Powered</h3><p>Leverage AI to save 10+ hours per week on content creation, marketing, and customer service.</p></div>
+            <div class="feature-card"><div class="feature-icon">💰</div><h3>Revenue-Ready</h3><p>Business templates for every stage: revenue tracking, customer feedback, content calendars.</p></div>
+            <div class="feature-card"><div class="feature-icon">🚀</div><h3>Fast Results</h3><p>Designed to get you from zero to first sale in as little as 5-7 days.</p></div>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="section-header">
+            <h2>Choose Your Product</h2>
+            <p>Instant digital download after purchase</p>
+        </div>
+        <div class="products-grid">
+
+            <!-- Free Mini Pack -->
+            <div class="product-card">
+                <div class="product-badge" style="background:#10b981;">Free</div>
+                <div class="product-img"><img src="images/products/thumb-minipack.png" alt="Top 10 AI Workflows"></div>
+                <div class="product-content">
+                    <div class="product-category">Free Download</div>
+                    <h3>Top 10 AI Workflows (Mini Pack)</h3>
+                    <p>Free sample of the full cheat sheet. 10 ready-to-use AI workflow prompts with tips.</p>
+                    <div class="product-price">
+                        <span class="price" style="color:#10b981;">FREE</span>
+                        <a href="top10-ai-workflows-free.pdf" class="btn btn-primary">Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cheat Sheet $47 -->
+            <div class="product-card" style="border-color: var(--primary); border-width: 2px;">
+                <div class="product-badge">Bestseller</div>
+                <div class="product-img"><img src="images/products/thumb-cheatsheet.png" alt="AI Solopreneur Cheat Sheet"></div>
+                <div class="product-content">
+                    <div class="product-category">eBook -- 42 Pages</div>
+                    <h3>The AI Solopreneur Cheat Sheet</h3>
+                    <p>50 copy-paste AI workflows with visual diagrams, prompt templates, and time-saving infographics.</p>
+                    <div class="product-price">
+                        <span class="price">$47</span>
+                        <a href="https://paypal.me/Dvenky007/47" target="_blank" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frameworks $27 -->
+            <div class="product-card">
+                <div class="product-img"><img src="images/products/thumb-frameworks.png" alt="30 Visual Frameworks"></div>
+                <div class="product-content">
+                    <div class="product-category">Visual Guide</div>
+                    <h3>30 Visual Frameworks</h3>
+                    <p>Full-page visual frameworks from ideation to scaling. Each is a standalone cheat sheet.</p>
+                    <div class="product-price">
+                        <span class="price">$27</span>
+                        <a href="https://paypal.me/Dvenky007/27" target="_blank" class="btn btn-outline">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Templates $27 -->
+            <div class="product-card">
+                <div class="product-img"><img src="images/products/thumb-templates.png" alt="25 Business Templates"></div>
+                <div class="product-content">
+                    <div class="product-category">Templates Pack</div>
+                    <h3>25 Business Templates</h3>
+                    <p>Notion workspace, Google Sheets, and PDF templates for running a digital product business.</p>
+                    <div class="product-price">
+                        <span class="price">$27</span>
+                        <a href="https://paypal.me/Dvenky007/27" target="_blank" class="btn btn-outline">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Playbook $97 -->
+            <div class="product-card">
+                <div class="product-badge" style="background:#ef4444;">Premium</div>
+                <div class="product-img"><img src="images/products/thumb-playbook.png" alt="AI Solopreneur Playbook"></div>
+                <div class="product-content">
+                    <div class="product-category">Premium Guide</div>
+                    <h3>The AI Solopreneur Playbook</h3>
+                    <p>150+ page comprehensive guide with templates, frameworks, 90-day action plan, and community.</p>
+                    <div class="product-price">
+                        <span class="price">$97</span>
+                        <a href="https://paypal.me/Dvenky007/97" target="_blank" class="btn btn-outline">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Bundle $147 -->
+    <section class="bundle-banner" id="bundle">
+        <h2>Digital Product Starter Bundle</h2>
+        <p>Cheat Sheet + 25 Templates + 30 Frameworks + Playbook -- Everything you need</p>
+        <div>
+            <span class="bundle-price">$147</span>
+            <span class="bundle-savings">$201 value -- save $54</span>
+        </div>
+        <a href="https://paypal.me/Dvenky007/147" target="_blank" class="btn" style="background: white; color: var(--primary); margin-top: 1.5rem;">Get the Bundle</a>
+    </section>
+
+    <!-- Urgency -->
+    <section class="urgency">
+        <h2>Launch Pricing Ends Soon</h2>
+        <p>First 500 buyers get our bonus AI Prompt Library free (normally $17). Prices go up after launch.</p>
+        <div style="display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;">
+            <div><div style="font-size:2rem; font-weight:800; color:var(--primary);">50</div><div style="font-size:0.8rem; color:var(--text-muted);">AI Workflows</div></div>
+            <div><div style="font-size:2rem; font-weight:800; color:var(--primary);">$10</div><div style="font-size:0.8rem; color:var(--text-muted);">Avg Time Saved/Workflow</div></div>
+            <div><div style="font-size:2rem; font-weight:800; color:var(--primary);">30min</div><div style="font-size:0.8rem; color:var(--text-muted);">Money-Back Guarantee</div></div>
+        </div>
+    </section>
+
+    <!-- Email Capture -->
+    <section class="email-capture">
+        <h2 style="display:inline-block; margin-bottom: 0.5rem;">Free: 5 Tools to Build a Digital Product Business</h2>
+        <p style="color: var(--text-muted); margin: 0 auto;">Get a free 5-page visual infographic with everything you need to get started.</p>
+        <form class="email-form">
+            <input type="email" required class="email-input" placeholder="your@email.com">
+            <button type="submit" class="btn btn-primary">Get Free</button>
+        </form>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="section-header"><h2>Frequently Asked Questions</h2></div>
+        <div class="faq-item">
+            <div class="faq-question">What format are the products?<span class="faq-toggle">+</span></div>
+            <div class="faq-answer">All products are downloadable PDF files. The template pack includes additional Notion workspace links and Google Sheets.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How do I receive my purchase?<span class="faq-toggle">+</span></div>
+            <div class="faq-answer">Instant download after payment. The PDF is delivered immediately through a secure download link.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Is the cheat sheet worth the price?<span class="faq-toggle">+</span></div>
+            <div class="faq-answer">Each workflow saves about 10 minutes. 50 workflows means 500 minutes saved. At $47 you pay less than a dollar per workflow. Most people save hours per week using them.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Can I get a refund?<span class="faq-toggle">+</span></div>
+            <div class="faq-answer">Contact us directly and we will work it out. We want you to succeed. 30-day money-back guarantee.</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#products" style="color: white; text-decoration: none;">Products</a>
+            <a href="#faq" style="color: white; text-decoration: none;">FAQ</a>
+            <a href="#" style="color: white; text-decoration: none;">Contact</a>
+        </div>
+        <p>© 2026 Digital Pedia. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(function(q) {
+            q.addEventListener('click', function() {
+                var item = this.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
