@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Digital Pedia Lead Export</title>
+<meta charset="UTF-8">
+<style>
+body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+h1 { color: #6366f1; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+th, td { padding: 0.5rem; border-bottom: 1px solid #e2e8f0; text-align: left; }
+th { background: #f8fafc; font-weight: 600; }
+.badge { background: #10b981; color: white; padding: 0.2rem 0.5rem; border-radius: 99px; font-size: 0.8rem; }
+.count { font-size: 2rem; font-weight: 800; color: #6366f1; }
+.stats { display: flex; gap: 2rem; margin: 1rem 0; }
+.btn { background: #6366f1; color: white; padding: 0.5rem 1rem; border: none; border-radius: 6px; text-decoration: none; font-size: 0.9rem; }
+textarea { width: 100%; height: 200px; margin: 1rem 0; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.5rem; }
+</style>
+</head>
+<body>
+<h1>Digital Pedia Leads</h1>
+<p>Export and manage captured email leads. Run this locally or host it.</p>
+
+<h2>API Dashboard</h2>
+<div class="stats">
+    <div><div class="count" id="total">-</div>Total Leads</div>
+</div>
+<table id="leadsTable">
+    <thead><tr><th>Email</th><th>Source</th><th>Freebie</th><th>Date</th></tr></thead>
+    <tbody id="leadsBody"></tbody>
+</table>
+<button class="btn" onclick="loadLeads()">Refresh</button>
+<a class="btn" href="/api/leads/export" style="margin-left:0.5rem">Export CSV</a>
+
+<h2>LocalStorage Sync Tool</h2>
+<p>Paste localStorage data from the landing page to extract leads:</p>
+<textarea id="lsInput" placeholder='Paste localStorage.getItem("dp_signups") here...'></textarea>
+<button class="btn" onclick="parseLocalStorage()">Extract Emails</button>
+<pre id="parseResult" style="margin-top:1rem"></pre>
+
+<script>
+var LEAD_API = 'https://api.digitalpedia.com/api/leads'; // UPDATE THIS
+
+async function loadLeads() {
+    try {
+        var resp = await fetch(LEAD_API + '/stats');
+        var data = await resp.json();
+        document.getElementById('total').textContent = data.total_leads;
+        var body = document.getElementById('leadsBody');
+        body.innerHTML = '';
+        data.recent.forEach(function(lead) {
+            var row = document.createElement('tr');
+            row.innerHTML = '<td>' + lead.email + '</td>' +
+                '<td><span class="badge">' + lead.source + '</span></td>' +
+                '<td>' + (lead.freebie || '-') + '</td>' +
+                '<td>' + new Date(lead.created_at).toLocaleDateString() + '</td>';
+            body.appendChild(row);
+        });
+    } catch(e) {
+        document.getElementById('total').textContent = 'API not deployed';
+    }
+}
+
+function parseLocalStorage() {
+    var input = document.getElementById('lsInput').value.trim();
+    try {
+        var data = JSON.parse(input);
+        var emails = {};
+        data.forEach(function(item) {
+            if (item.email) {
+                if (!emails[item.email]) emails[item.email] = {source: item.source || 'unknown', freebie: item.freebie || '', count: 0};
+                emails[item.email].count++;
+            }
+        });
+        var count = Object.keys(emails).length;
+        var result = 'Found ' + count + ' unique emails:\n\n';
+        for (var e in emails) {
+            result += emails[e].source + '\t' + (emails[e].freebie || '-') + '\t' + e + '\n';
+        }
+        document.getElementById('parseResult').textContent = result;
+    } catch(e) {
+        document.getElementById('parseResult').textContent = 'Parse error: ' + e.message;
+    }
+}
+
+// Auto-load on page load
+loadLeads();
+</script>
+</body>
+</html>

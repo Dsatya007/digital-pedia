@@ -414,11 +414,11 @@
             <div class="freebie-card">
                 <div class="freebie-badge">Free</div>
                 <div class="freebie-content">
-                    <h3>AI Tools Comparison Chart 2025</h3>
+                    <h3>AI Tools Comparison Chart 2026</h3>
                     <p>20+ AI tools compared side by side -- writing, design, coding, marketing, automation. See pricing, features, and best use cases in one glance.</p>
                     <div class="freebie-capture">
                         <input type="email" class="freebie-email" data-freebie="ai-tools-comparison" placeholder="your@email.com">
-                        <button class="btn btn-solid btn-download" onclick="unlockFreebie('ai-tools-comparison-2025.pdf', this, event)">Get Chart</button>
+                        <button class="btn btn-solid btn-download" onclick="unlockFreebie('ai-tools-comparison-2026.pdf', this, event)">Get Chart</button>
                     </div>
                 </div>
             </div>
@@ -599,6 +599,26 @@
         })();
 
         // ============================================================
+        // REAL LEAD FORWARDING TO INBOX (FormSubmit.co - free)
+        // ============================================================
+        function sendLeadToInbox(email, freebie, source) {
+            try {
+                fetch('https://formsubmit.co/ajax/dvvenky@gmail.com', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: email,
+                        _subject: freebie ? 'Digital Pedia Lead: ' + freebie : 'Digital Pedia New Lead',
+                        freebie: freebie || 'general_signup',
+                        source: source || 'landing',
+                        _captcha: 'false',
+                        _template: 'table'
+                    })
+                }).catch(function() {});
+            } catch(e) {}
+        }
+
+        // ============================================================
         // FREEBIE EMAIL CAPTURE & DOWNLOAD UNLOCK
         // ============================================================
         function unlockFreebie(pdfFilename, btn, event) {
@@ -625,6 +645,9 @@
             var signups = JSON.parse(localStorage.getItem('dp_signups') || '[]');
             signups.push(signup);
             localStorage.setItem('dp_signups', JSON.stringify(signups));
+
+            // ALSO send to real inbox (FormSubmit.co)
+            sendLeadToInbox(email, pdfFilename, signup.source);
 
             // Update button state
             btn.textContent = 'Downloading...';
