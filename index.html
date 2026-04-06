@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Pedia - AI Solopreneur Cheat Sheet, Templates & Frameworks</title>
+    <!-- Google Analytics 4 -- Tracks traffic sources, conversions, and engagement -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-REPLACE_ME"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-REPLACE_ME', {
+            page_title: 'Digital Pedia - AI Products',
+            custom_map: {dimension1: 'traffic_source', dimension2: 'product_name', dimension3: 'cta_type'}
+        });
+        // Track page load source
+        (function(){
+            var params = new URLSearchParams(window.location.search);
+            var source = params.get('utm_source') || (document.referrer.indexOf('reddit')>-1?'reddit':document.referrer.indexOf('twitter')>-1||document.referrer.indexOf('x.com')>-1?'twitter':document.referrer.indexOf('google')>-1?'google':'organic');
+            gtag('set', 'traffic_source', source);
+        })();
+    </script>
+    <!-- END Google Analytics 4 -->
+    <!-- Digital Pedia Custom Analytics -->
+    <script src="js/analytics-tracker.js"></script>
     <meta name="description" content="50 copy-paste AI workflows, 25 business templates, and 30 visual frameworks to launch and scale your digital product business. Save 10+ hours per week.">
     <meta name="keywords" content="AI solopreneur, AI workflows cheat sheet, digital products, Notion templates, AI prompts, solopreneur guide, side hustle AI, automation workflows">
     <meta property="og:title" content="Digital Pedia - AI Solopreneur Products">
@@ -253,6 +273,7 @@
             <a href="#features">Features</a>
             <a href="#faq">FAQ</a>
             <a href="#bundle">Bundle</a>
+            <a href="analytics-dashboard.html" title="Analytics Dashboard">Analytics</a>
         </div>
     </nav>
 
@@ -571,6 +592,11 @@
                     clicks.push(purchase);
                     localStorage.setItem('dp_clicks', JSON.stringify(clicks));
 
+                    // GA4: Track purchase intent
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'begin_checkout', {product_name: productName, product_price: this.getAttribute('data-price') || '0', traffic_source: source});
+                    }
+
                     var link = this.getAttribute('href');
                     var separator = link.indexOf('?') > -1 ? '&' : '?';
                     this.setAttribute('href', link + separator + 'utm_source=' + encodeURIComponent(source));
@@ -594,6 +620,10 @@
                     var msg = document.getElementById('email-capture-msg');
                     if (msg) { msg.textContent = 'You\'re in! Check your inbox for the free guide.'; msg.style.display = 'block'; }
                     document.getElementById('email-capture-input').value = '';
+                    // GA4: Track email signup
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'generate_lead', {traffic_source: source, signup_method: 'email_capture'});
+                    }
                 });
             }
         })();
@@ -655,6 +685,11 @@
             btn.disabled = true;
             input.style.borderColor = '#10b981';
             input.disabled = true;
+
+            // GA4: Track freebie download (lead generation event)
+            if (typeof gtag === 'function') {
+                gtag('event', 'generate_lead', {content_type: 'freebie_download', content_name: pdfFilename, traffic_source: signup.source});
+            }
 
             // Trigger download
             setTimeout(function() {
@@ -761,6 +796,10 @@
                     localStorage.setItem('dp_signups', JSON.stringify(signups));
                     exitForm.style.display = 'none';
                     if (exitThankYou) exitThankYou.style.display = 'block';
+                    // GA4: Track exit intent lead capture
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'generate_lead', {traffic_source: 'exit_intent', signup_method: 'exit_popup'});
+                    }
                 });
             }
         })();

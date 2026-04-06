@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Pedia - Analytics Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #6366f1; --accent: #10b981; --bg: #fff; --bg-alt: #f8fafc; --text: #1e293b; --text-muted: #64748b; --border: #e2e8f0; --danger: #ef4444; --warning: #f59e0b; }
+        body { font-family: system-ui, -apple-system, sans-serif; color: var(--text); line-height: 1.6; background: var(--bg-alt); }
+        .header { background: var(--primary); color: #fff; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .header h1 { font-size: 1.5rem; }
+        .header a { color: #fff; text-decoration: none; opacity: 0.8; }
+        .header a:hover { opacity: 1; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        
+        /* Stats Cards */
+        .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .stat-card { background: var(--bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); }
+        .stat-card .label { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .stat-card .value { font-size: 2rem; font-weight: 800; color: var(--primary); }
+        .stat-card .value.green { color: var(--accent); }
+        
+        /* Charts */
+        .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .chart-card { background: var(--bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); }
+        .chart-card h3 { margin-bottom: 1rem; color: var(--text); }
+        
+        /* Bar chart */
+        .bar-chart { display: flex; flex-direction: column; gap: 0.5rem; }
+        .bar-row { display: flex; align-items: center; gap: 0.75rem; }
+        .bar-label { min-width: 120px; font-size: 0.85rem; font-weight: 500; }
+        .bar-track { flex: 1; height: 24px; background: var(--bg-alt); border-radius: 6px; overflow: hidden; }
+        .bar-fill { height: 100%; background: var(--primary); border-radius: 6px; transition: width 0.5s; display: flex; align-items: center; justify-content: flex-end; padding: 0 8px; color: #fff; font-size: 0.75rem; font-weight: 600; }
+        .bar-count { min-width: 40px; font-size: 0.85rem; font-weight: 600; }
+        
+        /* Table */
+        .table-card { background: var(--bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 2rem; }
+        .table-card h3 { margin-bottom: 1rem; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        th { background: var(--bg-alt); padding: 0.75rem; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); }
+        td { padding: 0.75rem; border-bottom: 1px solid var(--border); }
+        tr:hover td { background: var(--bg-alt); }
+        .badge { display: inline-block; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+        .badge.blue { background: #e0e7ff; color: var(--primary); }
+        .badge.green { background: #d1fae5; color: #065f46; }
+        .badge.yellow { background: #fef3c7; color: #92400e; }
+        
+        /* Controls */
+        .controls { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; align-items: center; }
+        .btn { background: var(--primary); color: #fff; padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
+        .btn:hover { background: var(--primary-dark); }
+        .btn.clear { background: var(--danger); }
+        select { padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px; }
+        
+        @media (max-width: 768px) { .chart-grid { grid-template-columns: 1fr; } .stats-row { grid-template-columns: repeat(2, 1fr); } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Digital Pedia - Analytics Dashboard</h1>
+        <a href="index.html">&larr; Back to Landing Page</a>
+    </div>
+    
+    <div class="container">
+        <div class="controls">
+            <select id="timeFilter">
+                <option value="all">All Time</option>
+                <option value="24h">Last 24 Hours</option>
+                <option value="7d">Last 7 Days</option>
+                <option value="30d">Last 30 Days</option>
+            </select>
+            <button class="btn" onclick="refreshDashboard()">Refresh</button>
+            <button class="btn clear" onclick="clearData()">Clear All Data</button>
+        </div>
+        
+        <div class="stats-row" id="overviewStats"></div>
+        <div class="chart-grid">
+            <div class="chart-card">
+                <h3>Traffic Sources</h3>
+                <div id="sourcesChart" class="bar-chart"></div>
+            </div>
+            <div class="chart-card">
+                <h3>CTA Click Performance</h3>
+                <div id="ctaChart" class="bar-chart"></div>
+            </div>
+            <div class="chart-card">
+                <h3>Scroll Depth</h3>
+                <div id="scrollChart" class="bar-chart"></div>
+            </div>
+            <div class="chart-card">
+                <h3>Downloads by File</h3>
+                <div id="downloadsChart" class="bar-chart"></div>
+            </div>
+        </div>
+        
+        <div class="table-card">
+            <h3>Recent Events</h3>
+            <div style="overflow-x:auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th><th>Type</th><th>Source</th><th>Page</th><th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody id="eventsTable"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    var TRACKER_KEY = 'dp_analytics';
+    
+    function getEvents() {
+        try { return JSON.parse(localStorage.getItem(TRACKER_KEY) || '[]'); } catch(e) { return []; }
+    }
+    
+    function filterEvents(events, filter) {
+        var now = Date.now();
+        var limits = { '24h': 24*60*60*1000, '7d': 7*24*60*60*1000, '30d': 30*24*60*60*1000 };
+        var ms = limits[filter];
+        if (ms) return events.filter(function(e) { return now - e.timestamp < ms; });
+        return events;
+    }
+    
+    function maxVal(obj) { var m = 0; for (var k in obj) { if (obj[k] > m) m = obj[k]; } return m || 1; }
+    
+    function renderBarChart(containerId, data, color) {
+        var container = document.getElementById(containerId);
+        var max = maxVal(data);
+        var html = '';
+        var sorted = Object.entries(data).sort(function(a,b){return b[1]-a[1];});
+        sorted.forEach(function(entry) {
+            var pct = Math.round(entry[1] / max * 100);
+            var label = entry[0];
+            var val = entry[1];
+            html += '<div class="bar-row"><span class="bar-label">' + label + '</span><div class="bar-track"><div class="bar-fill" style="width:' + pct + '%;background:' + (color||'var(--primary)') + '">' + val + '</div></div></div>';
+        });
+        if (!sorted.length) html = '<p style="color:var(--text-muted);font-size:0.85rem;">No data yet</p>';
+        container.innerHTML = html;
+    }
+    
+    function refreshDashboard() {
+        var filter = document.getElementById('timeFilter').value;
+        var events = filterEvents(getEvents(), filter);
+        
+        // Overview stats
+        var pageviews = events.filter(function(e){return e.type==='pageview'}).length;
+        var ctas = events.filter(function(e){return e.type==='cta_click'}).length;
+        var emails = events.filter(function(e){return e.type==='email_capture'}).length;
+        var dl = events.filter(function(e){return e.type==='download'}).length;
+        var uniqueSources = new Set(events.filter(function(e){return e.data && e.data.source}).map(function(e){return e.data.source})).size;
+        
+        document.getElementById('overviewStats').innerHTML = 
+            '<div class="stat-card"><div class="label">Page Views</div><div class="value">' + pageviews + '</div></div>' +
+            '<div class="stat-card"><div class="label">CTA Clicks</div><div class="value green">' + ctas + '</div></div>' +
+            '<div class="stat-card"><div class="label">Email Captures</div><div class="value">' + emails + '</div></div>' +
+            '<div class="stat-card"><div class="label">Downloads</div><div class="value green">' + dl + '</div></div>' +
+            '<div class="stat-card"><div class="label">Traffic Sources</div><div class="value">' + uniqueSources + '</div></div>';
+        
+        // Sources
+        var sources = {};
+        events.forEach(function(e) {
+            var s = e.data && e.data.source ? e.data.source : (e.utm_source || 'unknown');
+            if (e.type === 'pageview') { sources[s] = (sources[s]||0) + 1; }
+        });
+        renderBarChart('sourcesChart', sources, 'var(--primary)');
+        
+        // CTA clicks
+        var ctaData = {};
+        events.forEach(function(e) {
+            if (e.type === 'cta_click') {
+                var label = e.data && e.data.text ? e.data.text.substring(0, 30) : 'Unknown';
+                ctaData[label] = (ctaData[label]||0) + 1;
+            }
+        });
+        renderBarChart('ctaChart', ctaData, 'var(--accent)');
+        
+        // Scroll depth
+        var scrollData = {};
+        events.forEach(function(e) {
+            if (e.type === 'scroll_depth') {
+                var d = e.data && e.data.depth ? e.data.depth + '%' : '';
+                scrollData[d] = (scrollData[d]||0) + 1;
+            }
+        });
+        renderBarChart('scrollChart', scrollData, 'var(--warning)');
+        
+        // Downloads
+        var dlData = {};
+        events.forEach(function(e) {
+            if (e.type === 'download') {
+                var f = e.data && e.data.file ? e.data.file : 'Unknown';
+                dlData[f] = (dlData[f]||0) + 1;
+            }
+        });
+        renderBarChart('downloadsChart', dlData, 'var(--danger)');
+        
+        // Recent events table
+        var recent = events.slice(-50).reverse();
+        var tbody = '';
+        recent.forEach(function(e) {
+            var time = new Date(e.timestamp).toLocaleString();
+            var details = e.data ? JSON.stringify(e.data).substring(0, 80) : '';
+            var badgeClass = e.type === 'cta_click' ? 'badge green' : e.type === 'email_capture' ? 'badge blue' : 'badge yellow';
+            tbody += '<tr><td>' + time + '</td><td><span class="' + badgeClass + '">' + e.type + '</span></td><td>' + (e.data && e.data.source ? e.data.source : '-') + '</td><td>' + e.page + '</td><td>' + details + '</td></tr>';
+        });
+        if (!recent.length) tbody = '<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:2rem;">No events recorded yet. Visit the landing page to start tracking.</td></tr>';
+        document.getElementById('eventsTable').innerHTML = tbody;
+    }
+    
+    function clearData() {
+        if (confirm('Clear all analytics data? This cannot be undone.')) {
+            localStorage.removeItem(TRACKER_KEY);
+            refreshDashboard();
+        }
+    }
+    
+    document.getElementById('timeFilter').addEventListener('change', refreshDashboard);
+    refreshDashboard();
+    </script>
+</body>
+</html>
