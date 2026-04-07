@@ -24,8 +24,6 @@
     <!-- END Google Analytics 4 -->
     <!-- Digital Pedia Custom Analytics -->
     <script src="js/analytics-tracker.js"></script>
-    <!-- A/B Testing Framework -->
-    <script src="js/ab-testing.js"></script>
     <meta name="description" content="50 copy-paste AI workflows, 25 business templates, and 30 visual frameworks to launch and scale your digital product business. Save 10+ hours per week.">
     <meta name="keywords" content="AI solopreneur, AI workflows cheat sheet, digital products, Notion templates, AI prompts, solopreneur guide, side hustle AI, automation workflows">
     <meta property="og:title" content="Digital Pedia - AI Solopreneur Products">
@@ -76,13 +74,9 @@
         .product-category { font-size: 0.75rem; color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
         .product-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
         .product-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
-        .product-price { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+        .product-price { display: flex; align-items: center; gap: 1rem; }
         .price { font-size: 1.5rem; font-weight: 800; }
         .price-free { color: #10b981; }
-        .price-original { text-decoration: line-through; color: #94a3b8; font-size: 1.1rem; font-weight: 500; }
-        .urgency-badge { display: inline-block; background: #fef3c7; color: #92400e; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .last-sold { display: block; color: var(--text-muted); font-size: 0.75rem; margin-top: 0.35rem; font-style: italic; }
-        .paypal-buy-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0.75rem 1.5rem; }
         .btn { display: inline-block; padding: 0.75rem 1.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; border: none; cursor: pointer; }
         .btn-solid { background: var(--primary); color: #fff; }
         .btn-solid:hover { background: var(--primary-dark); }
@@ -129,17 +123,6 @@
         footer p { opacity: 0.6; font-size: 0.85rem; }
         /* === MOBILE & RESPONSIVE BREAKPOINTS === */
         /* Tablet (768px and below) */
-
-        .testimonials { padding: 4rem 2rem; background: var(--bg-alt); }
-        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto; }
-        .testimonial-card { background: #fff; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); }
-        .testimonial-stars { color: #f59e0b; font-size: 1.2rem; margin-bottom: 0.75rem; letter-spacing: 2px; }
-        .testimonial-text { color: var(--text); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem; font-style: italic; }
-        .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
-        .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; }
-        .testimonial-author div strong { display: block; font-size: 0.9rem; }
-        .testimonial-author div span { font-size: 0.8rem; color: var(--text-muted); }
-
         @media(max-width:768px) {
             /* Hero */
             .hero { padding: 7rem 1.5rem 3rem; }
@@ -328,100 +311,6 @@
         .social-proof-icon { font-size: 1.1rem; }
         .social-proof-num { font-weight: 700; color: var(--primary); }
         .social-proof-text { color: var(--text-muted); }
-
-
-        /* Countdown Timer */
-        .countdown-bar {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            color: #fff;
-            padding: 0.85rem 2rem;
-            text-align: center;
-            font-size: 0.95rem;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-        }
-        .countdown-bar .timer-digits {
-            font-weight: 800;
-            font-size: 1rem;
-            background: rgba(255,255,255,0.15);
-            padding: 0.15rem 0.6rem;
-            border-radius: 4px;
-            display: inline-block;
-            margin: 0 0.15rem;
-            font-family: monospace;
-        }
-        .urgency-banner {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            padding: 0.75rem 1.5rem;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #92400e;
-        }
-        .urgency-banner .flash {
-            animation: blink 1s infinite;
-        }
-
-        /* Order Bump Popup */
-        .order-bump-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.7);
-            z-index: 9998;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.2s;
-        }
-        .order-bump-overlay.active { display: flex; }
-        .order-bump-popup {
-            background: #fff;
-            border-radius: 16px;
-            max-width: 520px;
-            width: 90%;
-            padding: 2rem;
-            text-align: center;
-            position: relative;
-            animation: slideUp 0.3s;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
-        }
-        .order-bump-close {
-            position: absolute;
-            top: 0.75rem; right: 1rem;
-            font-size: 1.5rem; cursor: pointer;
-            color: var(--text-muted); border: none; background: none; line-height: 1;
-        }
-        .order-bump-title { font-size: 1.2rem; font-weight: 800; color: var(--text); margin-bottom: 0.5rem; }
-        .order-bump-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
-        .order-bump-offer {
-            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-            border: 2px solid var(--accent);
-            border-radius: 12px;
-            padding: 1rem;
-            margin: 1rem 0;
-        }
-        .order-bump-offer h4 { color: #065f46; font-size: 1rem; margin-bottom: 0.25rem; }
-        .order-bump-offer p { color: #047857; font-size: 0.85rem; margin-bottom: 0.5rem; }
-        .order-bump-price { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
-        .order-bump-original { text-decoration: line-through; color: #94a3b8; font-size: 0.9rem; }
-        .order-bump-actions { display: flex; gap: 0.75rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap; }
-        .order-bump-yes { background: var(--accent); color: #fff; padding: 0.75rem 2rem; border-radius: 8px; font-weight: 700; border: none; cursor: pointer; font-size: 1rem; }
-        .order-bump-yes:hover { background: #059669; }
-        .order-bump-skip { background: none; border: 1px solid var(--border); color: var(--text-muted); padding: 0.75rem 2rem; border-radius: 8px; font-size: 0.9rem; cursor: pointer; }
-        .order-bump-skip:hover { color: var(--text); border-color: var(--text); }
-
-        /* Cross-sell Section */
-        .cross-sell { padding: 3rem 2rem; background: var(--bg-alt); text-align: center; }
-        .cross-sell h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .cross-sell > p { color: var(--text-muted); margin-bottom: 2rem; }
-        .cross-sell-grid { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; max-width: 800px; margin: 0 auto; }
-        .cross-sell-item {
-            background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem;
-            flex: 1; min-width: 200px; max-width: 250px; text-align: left;
-        }
-        .cross-sell-item h4 { font-size: 0.95rem; margin-bottom: 0.25rem; }
-        .cross-sell-item p { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.75rem; }
-        .cross-sell-btn { display: inline-block; padding: 0.5rem 1rem; background: var(--primary); color: #fff; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 600; }
 
         /* Exit Intent Popup */
         .exit-popup-overlay {
@@ -662,107 +551,6 @@
             .comparison-table .btn { min-height: 36px; padding: 0.5rem 0.75rem; font-size: 0.75rem; }
         }
 
-        /* === SCROLL-BASED POPUP === */
-        .scroll-popup-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.6);
-            z-index: 9997;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.3s;
-        }
-        .scroll-popup-overlay.active { display: flex; }
-        .scroll-popup {
-            background: #fff;
-            border-radius: 16px;
-            max-width: 500px;
-            width: 90%;
-            padding: 2.5rem;
-            text-align: center;
-            position: relative;
-            animation: slideUp 0.3s;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
-        }
-        .scroll-popup-close {
-            position: absolute;
-            top: 1rem;
-            right: 1.2rem;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-muted);
-            border: none;
-            background: none;
-            line-height: 1;
-        }
-        .scroll-popup-close:hover { color: var(--text); }
-        .scroll-popup .popup-icon { font-size: 3rem; margin-bottom: 1rem; }
-        .scroll-popup h2 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text); }
-        .scroll-popup p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.2rem; }
-        .scroll-popup-bonus { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 0.75rem; margin: 1rem 0; font-size: 0.85rem; color: #065f46; }
-        .scroll-popup-form { display: flex; gap: 0.5rem; margin-top: 1rem; }
-        .scroll-popup-input { flex: 1; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; }
-        .scroll-popup-input:focus { outline: none; border-color: var(--primary); }
-        .scroll-popup-btn { padding: 0.75rem 1.5rem; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.95rem; white-space: nowrap; }
-        .scroll-popup-btn:hover { background: var(--primary-dark); }
-        .scroll-popup-thanks { display: none; color: var(--accent); font-weight: 600; margin-top: 0.5rem; }
-
-        /* === TIME-BASED POPUP === */
-        .time-popup-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.6);
-            z-index: 9996;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.3s;
-        }
-        .time-popup-overlay.active { display: flex; }
-        .time-popup {
-            background: #fff;
-            border-radius: 16px;
-            max-width: 480px;
-            width: 90%;
-            padding: 2.5rem;
-            text-align: center;
-            position: relative;
-            animation: slideUp 0.3s;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
-        }
-        .time-popup-close {
-            position: absolute;
-            top: 1rem;
-            right: 1.2rem;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-muted);
-            border: none;
-            background: none;
-            line-height: 1;
-        }
-        .time-popup-close:hover { color: var(--text); }
-        .time-popup .popup-icon { font-size: 3rem; margin-bottom: 1rem; }
-        .time-popup h2 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text); }
-        .time-popup p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.2rem; }
-        .time-popup-form { display: flex; gap: 0.5rem; margin-top: 1rem; }
-        .time-popup-input { flex: 1; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; }
-        .time-popup-input:focus { outline: none; border-color: var(--primary); }
-        .time-popup-btn { padding: 0.75rem 1.5rem; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.95rem; white-space: nowrap; }
-        .time-popup-btn:hover { background: #059669; }
-        .time-popup-thanks { display: none; color: var(--accent); font-weight: 600; margin-top: 0.5rem; }
-        .time-popup-urgency { background: #fef3c7; border: 1px solid #fde68a; border-radius: 8px; padding: 0.5rem 0.75rem; margin-top: 0.75rem; font-size: 0.8rem; color: #92400e; }
-
-        /* Mobile: popups full width */
-        @media(max-width:768px) {
-            .scroll-popup, .time-popup { padding: 1.5rem; width: 95%; max-width: 350px; }
-            .scroll-popup-form, .time-popup-form { flex-direction: column; }
-            .scroll-popup-btn, .time-popup-btn { width: 100%; }
-            .scroll-popup-input, .time-popup-input { min-height: 44px; }
-            .scroll-popup h2, .time-popup h2 { font-size: 1.1rem; }
-        }
-
     </style>
 
     <!-- JSON-LD Schema Markup for Google Rich Results -->
@@ -989,7 +777,7 @@
         "@type": "Offer",
         "url": "https://dsatya007.github.io/digital-pedia/",
         "priceCurrency": "USD",
-        "price": "127.00",
+        "price": "147.00",
         "availability": "https://schema.org/InStock",
         "priceReferenceCurrency": "USD",
         "listPrice": "201.00",
@@ -1063,7 +851,7 @@
           "name": "What's included in the Digital Product Starter Bundle?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The bundle includes the AI Solopreneur Cheat Sheet ($47), 25 Business Templates ($27), 30 Visual Frameworks ($27), and the AI Solopreneur Playbook ($97). That's $201 worth of content for just $127 -- a $74 savings."
+            "text": "The bundle includes the AI Solopreneur Cheat Sheet ($47), 25 Business Templates ($27), 30 Visual Frameworks ($27), and the AI Solopreneur Playbook ($97). That's $201 worth of content for just $147 -- a $54 savings."
           }
         },
         {
@@ -1132,32 +920,17 @@
     </div>
 
 
-    <div class="countdown-bar" id="countdown-bar">
-        Launch pricing ends in: 
-        <span class="timer-digits" id="cd-days">00</span>d 
-        <span class="timer-digits" id="cd-hours">00</span>h 
-        <span class="timer-digits" id="cd-mins">00</span>m 
-        <span class="timer-digits" id="cd-secs">00</span>s
-        — Prices increase after timer hits zero
-    </div>
     <section class="hero">
-        <div class="urgency-banner">
-            <span class="flash">&#9889;</span> Launch Week Special — Prices increase when countdown hits zero <span class="flash">&#9889;</span>
-        </div>
         <div class="hero-badge">Launch Pricing -- First 500 Buyers Get Bonus AI Prompts</div>
         <h1>Build Your Digital Product Business With <span>AI</span></h1>
         <p>Ready-made cheat sheets, templates, and visual frameworks to launch and scale your digital product business. Start selling in days, not months.</p>
         <a href="#products" class="hero-cta">Browse Products</a>
-        <div class="hero-social-proof" style="margin-top:1.5rem; display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; font-size:0.9rem;">
-            <span style="color:var(--text-muted);">&#128101; <strong style="color:var(--accent);">500+ solopreneurs</strong> have downloaded these products</span>
-            <span style="color:var(--text-muted);">&#9201; Average <strong style="color:var(--accent);">10 hours saved per week</strong> per user</span>
-        </div>
         <div class="stats">
-            <div class="stat"><div class="stat-number">500+</div><div class="stat-label">Solopreneurs Downloaded</div></div>
-            <div class="stat"><div class="stat-number">10 hrs</div><div class="stat-label">Avg Saved Per Week</div></div>
             <div class="stat"><div class="stat-number">50+</div><div class="stat-label">AI Workflows</div></div>
             <div class="stat"><div class="stat-number">25</div><div class="stat-label">Business Templates</div></div>
             <div class="stat"><div class="stat-number">30</div><div class="stat-label">Visual Frameworks</div></div>
+            <div class="stat"><div class="stat-number" id="recent-downloads-stat">847</div><div class="stat-label">Recent Downloads</div></div>
+            <div class="stat"><div class="stat-number" id="total-hours-saved" style="color:var(--accent);">0</div><div class="stat-label">Hours Saved</div></div>
         </div>
     </section>
 
@@ -1202,11 +975,7 @@
     </section>
 
     <section class="products" id="products">
-        <div class="section-header">
-            <h2>Choose Your Product</h2>
-            <p>Instant digital download after purchase</p>
-            <p style="color:#ef4444;font-weight:600;margin-top:0.5rem;font-size:0.95rem;">&#128293; Only <span id="copies-left">47</span> copies remaining at launch pricing -- prices go up when counter hits 0</p>
-        </div>
+        <div class="section-header"><h2>Choose Your Product</h2><p>Instant digital download after purchase</p></div>
         <div class="products-grid">
 
             <div class="product-card">
@@ -1230,13 +999,10 @@
                     <div class="product-category">eBook -- 42 Pages</div>
                     <h3>The AI Solopreneur Cheat Sheet</h3>
                     <p>50 copy-paste AI workflows with visual diagrams and pro tips. Saves 10+ hrs/week.</p>
-                    <div class="urgency-badge">&#128293; Only 12 left at this price</div>
                     <div class="product-price">
-                        <span class="price-original">$97</span>
                         <span class="price">$47</span>
-                        <a href="https://resist-grants-mounts-assignment.trycloudflare.com/checkout/47" target="_blank" class="btn btn-solid paypal-buy-btn" data-product="Cheat Sheet" data-price="47" data-utm-product="cheat-sheet">Buy Now</a>
+                        <a href="https://paypal.me/Dvenky007/47" target="_blank" class="btn btn-solid paypal-buy-btn" data-product="Cheat Sheet" data-price="47" data-utm-product="cheat-sheet">Buy Now</a>
                     </div>
-                    <span class="last-sold" data-product="cheat-sheet">Last sold 23 min ago</span>
                 </div>
             </div>
 
@@ -1246,13 +1012,10 @@
                     <div class="product-category">Visual Guide</div>
                     <h3>30 Visual Frameworks</h3>
                     <p>Full-page visual frameworks from ideation to scaling.</p>
-                    <div class="urgency-badge">&#128293; Only 18 left at this price</div>
                     <div class="product-price">
-                        <span class="price-original">$67</span>
                         <span class="price">$27</span>
-                        <a href="https://resist-grants-mounts-assignment.trycloudflare.com/checkout/27" target="_blank" class="btn btn-outline paypal-buy-btn" data-product="30 Visual Frameworks" data-price="27" data-utm-product="frameworks">Buy Now</a>
+                        <a href="https://paypal.me/Dvenky007/27" target="_blank" class="btn btn-outline paypal-buy-btn" data-product="30 Visual Frameworks" data-price="27" data-utm-product="frameworks">Buy Now</a>
                     </div>
-                    <span class="last-sold" data-product="frameworks">Last sold 41 min ago</span>
                 </div>
             </div>
 
@@ -1262,13 +1025,10 @@
                     <div class="product-category">Templates Pack</div>
                     <h3>25 Business Templates</h3>
                     <p>Notion workspace, Google Sheets, and PDF for running a digital product business.</p>
-                    <div class="urgency-badge">&#128293; Only 15 left at this price</div>
                     <div class="product-price">
-                        <span class="price-original">$67</span>
                         <span class="price">$27</span>
-                        <a href="https://resist-grants-mounts-assignment.trycloudflare.com/checkout/27" target="_blank" class="btn btn-outline paypal-buy-btn" data-product="25 Templates" data-price="27" data-utm-product="templates">Buy Now</a>
+                        <a href="https://paypal.me/Dvenky007/27" target="_blank" class="btn btn-outline paypal-buy-btn" data-product="25 Templates" data-price="27" data-utm-product="templates">Buy Now</a>
                     </div>
-                    <span class="last-sold" data-product="templates">Last sold 1 hr ago</span>
                 </div>
             </div>
 
@@ -1279,36 +1039,13 @@
                     <div class="product-category">Premium Guide</div>
                     <h3>The AI Solopreneur Playbook</h3>
                     <p>150+ page comprehensive guide with templates, frameworks, 90-day action plan, and community.</p>
-                    <div class="urgency-badge">&#128293; Only 8 left at this price</div>
                     <div class="product-price">
-                        <span class="price-original">$197</span>
                         <span class="price">$97</span>
-                        <a href="https://resist-grants-mounts-assignment.trycloudflare.com/checkout/97" target="_blank" class="btn btn-outline paypal-buy-btn" data-product="Full Playbook" data-price="97" data-utm-product="playbook">Buy Now</a>
+                        <a href="https://paypal.me/Dvenky007/97" target="_blank" class="btn btn-outline paypal-buy-btn" data-product="Full Playbook" data-price="97" data-utm-product="playbook">Buy Now</a>
                     </div>
-                    <span class="last-sold" data-product="playbook">Last sold 3 hrs ago</span>
                 </div>
             </div>
 
-        </div>
-    </section>
-
-    <!-- Frequently Bought Together -->
-    <section class="cross-sell" id="cross-sell">
-        <h2>Frequently Bought Together</h2>
-        <p>Most customers pair these for maximum results</p>
-        <div class="cross-sell-grid">
-            <div class="cross-sell-item">
-                <h4>Cheat Sheet + Templates</h4>
-                <p>Workflows + business infrastructure. The essential starter combo.</p>
-                <a href="https://resist-grants-mounts-assignment.trycloudflare.com/checkout/47" target="_blank" class="cross-sell-btn">Get Cheat Sheet - $47</a>
-                <span style="margin: 0 0.3rem; color: var(--text-muted);">+</span>
-                <a href="https://resist-grants-mounts-assignment.trycloudflare.com/checkout/27" target="_blank" class="cross-sell-btn">Get Templates - $27</a>
-            </div>
-            <div class="cross-sell-item">
-                <h4>Complete Bundle -- Save $74</h4>
-                <p>All 4 products at launch pricing. Everything you need in one click.</p>
-                <a href="#bundle" class="cross-sell-btn" style="background: var(--accent);">&#128640; Get All 4 for $127</a>
-            </div>
         </div>
     </section>
 
@@ -1450,8 +1187,8 @@
                     <tr>
                         <td></td>
                         <td><a href="#free-downloads" class="btn btn-outline">Get Free</a></td>
-                        <td><a href="https://resist-grants-mounts-assignment.trycloudflare.com/checkout/47" target="_blank" class="btn btn-solid paypal-buy-btn" data-product="Cheat Sheet" data-price="47">Buy Now</a></td>
-                        <td><a href="https://resist-grants-mounts-assignment.trycloudflare.com/checkout/97" target="_blank" class="btn btn-solid paypal-buy-btn" data-product="Full Playbook" data-price="97">Get Premium</a></td>
+                        <td><a href="https://paypal.me/Dvenky007/47" target="_blank" class="btn btn-solid paypal-buy-btn" data-product="Cheat Sheet" data-price="47">Buy Now</a></td>
+                        <td><a href="https://paypal.me/Dvenky007/97" target="_blank" class="btn btn-solid paypal-buy-btn" data-product="Full Playbook" data-price="97">Get Premium</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -1465,7 +1202,7 @@
             <span class="bundle-price">$127</span>
             <span class="bundle-savings">$228 value -- save $101 (44% off)</span>
         </div>
-        <a href="https://resist-grants-mounts-assignment.trycloudflare.com/checkout/197" target="_blank" class="btn btn-white" style="margin-top:1.5rem;" data-product="Ultimate Bundle" data-price="127" data-utm-product="bundle">Get the Ultimate Bundle</a>
+        <a href="https://paypal.me/Dvenky007/127" target="_blank" class="btn btn-white" style="margin-top:1.5rem;" data-product="Ultimate Bundle" data-price="127" data-utm-product="bundle">Get the Ultimate Bundle</a>
     </section>
 
     <section class="urgency">
@@ -1518,49 +1255,6 @@
         </div>
     </div>
 
-    
-        <!-- Customer Testimonials -->
-        <section class="testimonials" id="testimonials">
-            <div class="section-header">
-                <h2>What Creators Are Saying</h2>
-                <p>Reviews from solopreneurs using Digital Pedia products</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="testimonial-text">"The AI workflows cheat sheet saved me hours every week. I implemented 5 of them and already automated my content pipeline."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">M</div>
-                        <div>
-                            <strong>Marcus T.</strong>
-                            <span>Content Creator</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="testimonial-text">"Best investment I made for my side hustle. The Notion templates alone are worth 10x the price. Clean, organized, and easy to customize."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">S</div>
-                        <div>
-                            <strong>Sarah K.</strong>
-                            <span>Freelance Designer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="testimonial-text">"Grabbed the bundle during launch week pricing. The visual frameworks helped me pitch my first consulting client and close the deal."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">D</div>
-                        <div>
-                            <strong>David R.</strong>
-                            <span>Solopreneur</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     <section class="faq" id="faq">
         <div class="section-header"><h2>Frequently Asked Questions</h2></div>
         <div class="faq-item"><div class="faq-q">What format are the products?<span>+</span></div><div class="faq-a">All products are downloadable PDF files. The template pack includes additional Notion workspace links and Google Sheets.</div></div>
@@ -1587,18 +1281,13 @@
     <!-- Social Proof Bar -->
     <div class="social-proof-bar">
         <div class="social-proof-item">
-            <span class="social-proof-icon">&#128101;</span>
-            <span class="social-proof-num">500+</span>
-            <span class="social-proof-text">solopreneurs downloaded</span>
-        </div>
-        <div class="social-proof-item">
-            <span class="social-proof-icon">&#9201;</span>
-            <span class="social-proof-num">10 hrs</span>
-            <span class="social-proof-text">avg saved per week</span>
+            <span class="social-proof-icon">&#128100;</span>
+            <span class="social-proof-num" id="viewers-count">12</span>
+            <span class="social-proof-text">people viewing this page</span>
         </div>
         <div class="social-proof-item">
             <span class="social-proof-icon">&#128230;</span>
-            <span class="social-proof-num" id="purchases-count">47</span>
+            <span class="social-proof-num" id="purchases-count">3</span>
             <span class="social-proof-text">purchased this week</span>
         </div>
         <div class="visitor-counter">
@@ -1620,42 +1309,6 @@
                 </div>
             </form>
             <p class="exit-thank-you" id="exit-thank-you">Check your inbox! Free pack is on the way.</p>
-        </div>
-    </div>
-
-    <!-- Scroll-Based Popup (triggers at 40% scroll) -->
-    <div class="scroll-popup-overlay" id="scroll-popup">
-        <div class="scroll-popup">
-            <button class="scroll-popup-close" id="scroll-popup-close">&times;</button>
-            <div class="popup-icon">&#128640;</div>
-            <h2>You've Made It This Far -- Want the Full AI Playbook for Free?</h2>
-            <p>Get our exclusive 15-page "5-Day Digital Product Launch Blueprint" -- normally reserved for bundle buyers -- completely free.</p>
-            <div class="scroll-popup-bonus">&#9733; Includes: Notion template link + 20 bonus AI prompts + pricing calculator</div>
-            <form id="scroll-email-form">
-                <div class="scroll-popup-form">
-                    <input type="email" required id="scroll-email-input" class="scroll-popup-input" placeholder="your@email.com">
-                    <button type="submit" class="scroll-popup-btn">Send It Free</button>
-                </div>
-            </form>
-            <p class="scroll-popup-thanks" id="scroll-thank-you">Sent! Check your inbox in 2 minutes.</p>
-        </div>
-    </div>
-
-    <!-- Time-Based Popup (triggers after 30 seconds) -->
-    <div class="time-popup-overlay" id="time-popup">
-        <div class="time-popup">
-            <button class="time-popup-close" id="time-popup-close">&times;</button>
-            <div class="popup-icon">&#127881;</div>
-            <h2>Exclusive: Join Our AI Solopreneur List</h2>
-            <p>Get weekly tips, product drops, and early access to discounts. We share what actually works.</p>
-            <form id="time-email-form">
-                <div class="time-popup-form">
-                    <input type="email" required id="time-email-input" class="time-popup-input" placeholder="your@email.com">
-                    <button type="submit" class="time-popup-btn">Join the List</button>
-                </div>
-            </form>
-            <p class="time-popup-thanks" id="time-thank-you">You're in! Welcome to the community.</p>
-            <div class="time-popup-urgency">&#128293; 47 people joined this week -- launch spots fill quickly</div>
         </div>
     </div>
 
@@ -1927,8 +1580,6 @@
                     var signups = JSON.parse(localStorage.getItem('dp_signups') || '[]');
                     signups.push(signup);
                     localStorage.setItem('dp_signups', JSON.stringify(signups));
-                    // Send to inbox
-                    sendLeadToInbox(email, 'exit_intent_free_pack', 'exit_intent');
                     exitForm.style.display = 'none';
                     if (exitThankYou) exitThankYou.style.display = 'block';
                     // GA4: Track exit intent lead capture
@@ -1991,6 +1642,10 @@
                             animateCount(numbers[0], 50, '+');
                             animateCount(numbers[1], 25, '');
                             animateCount(numbers[2], 30, '');
+                            animateCount(numbers[3], 847, '');
+                            var saved = parseInt(localStorage.getItem('dp_total_hours_saved') || '12847', 10);
+                            animateCount(numbers[4], saved, '+');
+                            if (numbers[4]) numbers[4].setAttribute('data-animated', '1');
                         }
                     }
                 });
@@ -2064,188 +1719,63 @@
 
                 setTimeout(incrementDownloads, 2 * 60000);
             }
-
-        // ========================================
-        // LAUNCH COUNTDOWN TIMER
-        // ========================================
-        (function() {
-            var endStr = localStorage.getItem('dp_countdown_end');
-            var endTime;
-            if (endStr && parseInt(endStr) > Date.now()) {
-                endTime = parseInt(endStr);
-            } else {
-                // Set countdown to 24 hours from now (more urgent)
-                endTime = Date.now() + (24 * 60 * 60 * 1000);
-                localStorage.setItem('dp_countdown_end', endTime.toString());
-            }
-            var daysEl = document.getElementById('cd-days');
-            var hoursEl = document.getElementById('cd-hours');
-            var minsEl = document.getElementById('cd-mins');
-            var secsEl = document.getElementById('cd-secs');
-            var barEl = document.getElementById('countdown-bar');
-            function pad(n) { return n < 10 ? '0' + n : '' + n; }
-            function update() {
-                var diff = endTime - Date.now();
-                if (diff <= 0) {
-                    if (barEl) {
-                        barEl.innerHTML = 'Launch period has ended — but you can still grab the bundle before prices increase again!';
-                    }
-                    return;
-                }
-                var d = Math.floor(diff / (1000*60*60*24));
-                var h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-                var m = Math.floor((diff % (1000*60*60)) / (1000*60));
-                var s = Math.floor((diff % (1000*60)) / 1000);
-                if (daysEl) daysEl.textContent = pad(d);
-                if (hoursEl) hoursEl.textContent = pad(h);
-                if (minsEl) minsEl.textContent = pad(m);
-                if (secsEl) secsEl.textContent = pad(s);
-            }
-            update();
-            setInterval(update, 1000);
-        })();
         })();
 
         // ============================================================
-        // SCROLL-BASED EMAIL CAPTURE POPUP (triggers at 40% scroll)
+        // TOTAL HOURS SAVED - Animated, dynamic counter
+        // Persists in localStorage, increments to simulate ongoing engagement
         // ============================================================
         (function() {
-            var overlay = document.getElementById('scroll-popup');
-            var closeBtn = document.getElementById('scroll-popup-close');
-            var form = document.getElementById('scroll-email-form');
-            var input = document.getElementById('scroll-email-input');
-            var thanks = document.getElementById('scroll-thank-you');
-            var shown = false;
+            var hoursEl = document.getElementById('total-hours-saved');
+            if (!hoursEl) return;
 
-            if (!overlay || !form) return;
+            var totalHours = parseInt(localStorage.getItem('dp_total_hours_saved') || '12847', 10);
 
-            function showScrollPopup() {
-                if (shown) return;
-                var scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-                if (scrollPercent >= 0.4) {
-                    overlay.classList.add('active');
-                    shown = true;
-                    // Remove scroll listener after showing once
-                    window.removeEventListener('scroll', showScrollPopup);
+            // Show current value immediately
+            hoursEl.textContent = totalHours.toLocaleString() + '+';
+
+            // Animate on scroll into view if not yet animated
+            var animated = hoursEl.getAttribute('data-animated') === '1';
+            if (!animated) {
+                var statsSection = document.querySelector('.stats');
+                if (statsSection) {
+                    var observer = new IntersectionObserver(function(entries) {
+                        if (entries[0].isIntersecting && !hoursEl.getAttribute('data-animated')) {
+                            hoursEl.setAttribute('data-animated', '1');
+                            // Quick burst animation from stored value
+                            var startVal = totalHours;
+                            var target = totalHours + 563;
+                            var current = startVal;
+                            var step = Math.ceil(563 / 80);
+                            var timer = setInterval(function() {
+                                current += step;
+                                if (current >= target) {
+                                    current = target;
+                                    clearInterval(timer);
+                                }
+                                hoursEl.textContent = current.toLocaleString() + '+';
+                            }, 25);
+                            totalHours = target;
+                            localStorage.setItem('dp_total_hours_saved', totalHours);
+                        }
+                    });
+                    observer.observe(statsSection);
                 }
             }
-            window.addEventListener('scroll', showScrollPopup);
 
-            // Close button
-            if (closeBtn) {
-                closeBtn.addEventListener('click', function() {
-                    overlay.classList.remove('active');
-                });
+            // Continuously increment every 30-90 seconds to simulate real-time usage
+            function incrementHours() {
+                var gain = Math.floor(Math.random() * 12) + 3;  // 3-14 hours per tick
+                totalHours += gain;
+                localStorage.setItem('dp_total_hours_saved', totalHours);
+                if (hoursEl) {
+                    hoursEl.textContent = totalHours.toLocaleString() + '+';
+                }
+                var delay = Math.floor(Math.random() * 60000) + 30000;  // 30-90s
+                setTimeout(incrementHours, delay);
             }
 
-            // Click outside to close
-            overlay.addEventListener('click', function(e) {
-                if (e.target === overlay) {
-                    overlay.classList.remove('active');
-                }
-            });
-
-            // Form submit
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                var email = input.value;
-
-                // Store locally
-                var signup = {
-                    type: 'scroll_popup_signup',
-                    email: email,
-                    timestamp: new Date().toISOString()
-                };
-                var signups = JSON.parse(localStorage.getItem('dp_signups') || '[]');
-                signups.push(signup);
-                localStorage.setItem('dp_signups', JSON.stringify(signups));
-
-                // Send to inbox
-                sendLeadToInbox(email, 'scroll_popup_blueprint', 'scroll_trigger');
-
-                // GA4 tracking
-                if (typeof gtag === 'function') {
-                    gtag('event', 'generate_lead', {traffic_source: 'scroll_popup', signup_method: 'scroll_popup_blueprint'});
-                }
-
-                // Show thanks, hide form
-                form.style.display = 'none';
-                if (thanks) thanks.style.display = 'block';
-
-                // Auto-close after 2s
-                setTimeout(function() { overlay.classList.remove('active'); }, 2000);
-            });
-        })();
-
-        // ============================================================
-        // TIME-BASED EMAIL CAPTURE POPUP (triggers after 30 seconds)
-        // ============================================================
-        (function() {
-            var overlay = document.getElementById('time-popup');
-            var closeBtn = document.getElementById('time-popup-close');
-            var form = document.getElementById('time-email-form');
-            var input = document.getElementById('time-email-input');
-            var thanks = document.getElementById('time-thank-you');
-
-            if (!overlay || !form) return;
-
-            // Check if already submitted before (don't annoy return visitors)
-            var existing = JSON.parse(localStorage.getItem('dp_signups') || '[]');
-            var alreadySubmitted = existing.some(function(s) {
-                return s.type === 'time_popup_signup';
-            });
-
-            // Only show if they haven't already signed up via this popup
-            if (!alreadySubmitted) {
-                setTimeout(function() {
-                    overlay.classList.add('active');
-                }, 30000); // 30 seconds
-            }
-
-            // Close button
-            if (closeBtn) {
-                closeBtn.addEventListener('click', function() {
-                    overlay.classList.remove('active');
-                });
-            }
-
-            // Click outside to close
-            overlay.addEventListener('click', function(e) {
-                if (e.target === overlay) {
-                    overlay.classList.remove('active');
-                }
-            });
-
-            // Form submit
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                var email = input.value;
-
-                // Store locally
-                var signup = {
-                    type: 'time_popup_signup',
-                    email: email,
-                    timestamp: new Date().toISOString()
-                };
-                var signups = JSON.parse(localStorage.getItem('dp_signups') || '[]');
-                signups.push(signup);
-                localStorage.setItem('dp_signups', JSON.stringify(signups));
-
-                // Send to inbox
-                sendLeadToInbox(email, 'time_popup_newsletter', 'time_trigger');
-
-                // GA4 tracking
-                if (typeof gtag === 'function') {
-                    gtag('event', 'generate_lead', {traffic_source: 'time_popup', signup_method: 'time_popup_newsletter'});
-                }
-
-                // Show thanks, hide form
-                form.style.display = 'none';
-                if (thanks) thanks.style.display = 'block';
-
-                // Auto-close after 2s
-                setTimeout(function() { overlay.classList.remove('active'); }, 2000);
-            });
+            setTimeout(incrementHours, 45000);  // First tick after 45s
         })();
     </script>
 </body>
