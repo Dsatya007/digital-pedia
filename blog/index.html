@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Pedia Blog — AI Workflows, Solopreneur Tips & Digital Product Insights</title>
+    <meta name="description" content="Practical guides on AI workflows, solopreneur strategies, and building digital products. Real tactics that work.">
+    <meta property="og:title" content="Digital Pedia Blog">
+    <meta property="og:description" content="AI workflows, solopreneur tips, and digital product strategies that actually work.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dsatya007.github.io/digital-pedia/blog/">
+    <link rel="alternate" type="application/rss+xml" title="Digital Pedia Blog RSS Feed" href="/digital-pedia/blog/rss.xml">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #6366f1; --primary-dark: #4f46e5; --accent: #10b981; --bg: #fff; --bg-alt: #f8fafc; --text: #1e293b; --text-muted: #64748b; --border: #e2e8f0; }
+        body { font-family: system-ui, -apple-system, sans-serif; color: var(--text); line-height: 1.6; }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); z-index: 100; padding: 0.75rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.25rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 1.5rem; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+        .nav-links a:hover { color: var(--primary); }
+        .hero { padding: 8rem 2rem 3rem; text-align: center; background: linear-gradient(135deg, #f0f0ff, #e0e7ff); }
+        .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+        .blog-grid { max-width: 900px; margin: 3rem auto; padding: 0 2rem; display: grid; gap: 2rem; }
+        .blog-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: all 0.2s; }
+        .blog-card:hover { border-color: var(--primary); box-shadow: 0 8px 25px rgba(0,0,0,0.06); }
+        .blog-card-meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+        .blog-card h2 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .blog-card h2 a { color: var(--text); text-decoration: none; }
+        .blog-card h2 a:hover { color: var(--primary); }
+        .blog-card p { color: var(--text-muted); font-size: 0.95rem; }
+        .blog-card .read-more { display: inline-block; margin-top: 0.75rem; color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+        .blog-card .read-more:hover { text-decoration: underline; }
+        .blog-article { max-width: 740px; margin: 8rem auto 4rem; padding: 0 2rem; }
+        .blog-article h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+        .blog-article .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+        .blog-article h2 { font-size: 1.4rem; margin: 2rem 0 1rem; }
+        .blog-article h3 { font-size: 1.15rem; margin: 1.5rem 0 0.75rem; }
+        .blog-article p { margin-bottom: 1.25rem; }
+        .blog-article a { color: var(--primary); }
+        .blog-article ul, .blog-article ol { margin: 1rem 0 1.25rem 1.5rem; }
+        .blog-article li { margin-bottom: 0.5rem; }
+        .blog-article blockquote { border-left: 4px solid var(--primary); padding: 1rem 1.5rem; margin: 1.5rem 0; background: var(--bg-alt); border-radius: 0 8px 8px 0; }
+        .blog-article code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.9em; }
+        .blog-article pre { background: var(--bg-alt); padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; }
+        .blog-article pre code { background: none; padding: 0; }
+        .blog-article strong { font-weight: 700; }
+        .cta-box { background: linear-gradient(135deg, #f0f0ff, #e0e7ff); padding: 2rem; border-radius: 12px; margin: 3rem 0; text-align: center; }
+        .cta-box h3 { margin-bottom: 0.5rem; }
+        .cta-box a { display: inline-block; background: var(--primary); color: #fff; padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 1rem; }
+        footer { background: var(--text); color: #fff; padding: 2rem; text-align: center; margin-top: 4rem; }
+        footer a { color: var(--primary); text-decoration: none; }
+        @media(max-width:768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .nav-links { display: none; }
+            .blog-grid { padding: 0 1rem; gap: 1.5rem; }
+            .blog-article { margin-top: 6rem; padding: 0 1rem; }
+            .blog-article h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="https://dsatya007.github.io/digital-pedia/" class="logo">Digital Pedia</a>
+        <div class="nav-links">
+            <a href="https://dsatya007.github.io/digital-pedia/#products">Products</a>
+            <a href="https://dsatya007.github.io/digital-pedia/#free-downloads">Freebies</a>
+            <a href="https://dsatya007.github.io/digital-pedia/blog/" style="color:var(--primary);font-weight:600;">Blog</a>
+            <a href="https://dsatya007.github.io/digital-pedia/referral/">Refer a Friend</a>
+        </div>
+    </nav>
+    <div class="hero">
+        <h1>The Digital Pedia Blog</h1>
+        <p>Real strategies for AI workflows, solopreneur growth, and building digital products. No fluff.</p>
+    </div>
+    <div class="blog-grid">
+
+        <article class="blog-card">
+            <div class="blog-card-meta">2026-04-06</div>
+            <h2><a href="50-ai-workflows-that-save-time.html">50 AI Workflows That Actually Save Time (My Honest List After Testing 200+)</a></h2>
+            <p>I tested over 200 AI workflows across different tools. These 50 are the ones that genuinely save time every single week. No hype, just what works.</p>
+            <a href="50-ai-workflows-that-save-time.html" class="read-more">Read more &rarr;</a>
+        </article>
+
+        <article class="blog-card">
+            <div class="blog-card-meta">2026-04-06</div>
+            <h2><a href="build-digital-product-business-one-weekend.html">How I Built a Digital Product Business in One Weekend</a></h2>
+            <p>A personal story of creating and launching digital products in 48 hours. The templates, frameworks, and lessons learned from turning an idea into actual revenue.</p>
+            <a href="build-digital-product-business-one-weekend.html" class="read-more">Read more &rarr;</a>
+        </article>
+
+        <article class="blog-card">
+            <div class="blog-card-meta">2025-04-06</div>
+            <h2><a href="best-ai-tools-small-business-2025.html">Best AI Tools for Small Business in 2025: A Practical Guide</a></h2>
+            <p>Discover the best AI tools for small business in 2025. Compare top options, see real use cases, and learn which tools actually deliver ROI for teams under 10 people.</p>
+            <a href="best-ai-tools-small-business-2025.html" class="read-more">Read more &rarr;</a>
+        </article>
+
+        <article class="blog-card">
+            <div class="blog-card-meta">2025-04-06</div>
+            <h2><a href="ai-workflow-automation-solopreneurs.html">AI Workflow Automation for Solopreneurs: The Complete 2025 Guide</a></h2>
+            <p>Discover how AI workflow automation can save solopreneurs 10+ hours per week. Learn the exact frameworks, tools, and step-by-step processes to automate repetitive tasks.</p>
+            <a href="ai-workflow-automation-solopreneurs.html" class="read-more">Read more &rarr;</a>
+        </article>
+
+        <article class="blog-card">
+            <div class="blog-card-meta">2025-04-06</div>
+            <h2><a href="how-to-use-ai-save-time-freelancer.html">How to Use AI to Save Time as a Freelancer: 15 Practical Strategies</a></h2>
+            <p>Learn proven strategies for how to use AI to save time as a freelancer. Real workflows that cut admin work by 60% and let you focus on billable hours.</p>
+            <a href="how-to-use-ai-save-time-freelancer.html" class="read-more">Read more &rarr;</a>
+        </article>
+
+        <article class="blog-card">
+            <div class="blog-card-meta">"2026-04-06"</div>
+            <h2><a href="3-ai-workflows-one-week-challenge.html">Try These 3 AI Workflows for One Week</a></h2>
+            <p>Three real AI workflows that save 5+ hours per week, used daily by our team. Free tools, no hype.</p>
+            <a href="3-ai-workflows-one-week-challenge.html" class="read-more">Read more &rarr;</a>
+        </article>
+
+    </div>
+    <footer>
+        <p>Copyright 2026 Digital Pedia. Visit <a href="https://dsatya007.github.io/digital-pedia/">the main site</a> for products & free downloads.</p>
+    </footer>
+</body>
+</html>

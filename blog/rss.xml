@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Digital Pedia Blog</title>
+    <link>https://dsatya007.github.io/digital-pedia/blog/</link>
+    <description>Practical guides on AI workflows, solopreneur strategies, and building digital products. Real tactics that work.</description>
+    <language>en-us</language>
+    <atom:link href="https://dsatya007.github.io/digital-pedia/blog/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Apr 2026 01:00:00 +0000</lastBuildDate>
+    <ttl>60</ttl>
+    <generator>Digital Pedia</generator>
+    <item>
+      <title>50 AI Workflows That Actually Save Time (My Honest List After Testing 200+)</title>
+      <link>https://dsatya007.github.io/digital-pedia/blog/50-ai-workflows-that-save-time.html</link>
+      <description>I tested over 200 AI workflows across different tools. These 50 are the ones that genuinely save time every single week. No hype, just what works.</description>
+      <guid>https://dsatya007.github.io/digital-pedia/blog/50-ai-workflows-that-save-time.html</guid>
+      <pubDate>Mon, 06 Apr 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>How I Built a Digital Product Business in One Weekend</title>
+      <link>https://dsatya007.github.io/digital-pedia/blog/build-digital-product-business-one-weekend.html</link>
+      <description>From zero to live product in 48 hours. The step-by-step process of creating and launching a digital product as a complete beginner.</description>
+      <guid>https://dsatya007.github.io/digital-pedia/blog/build-digital-product-business-one-weekend.html</guid>
+      <pubDate>Mon, 06 Apr 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Try These 3 AI Workflows for One Week</title>
+      <link>https://dsatya007.github.io/digital-pedia/blog/3-ai-workflows-one-week-challenge.html</link>
+      <description>Challenge yourself: run these 3 AI workflows for a week and see how much time you save.</description>
+      <guid>https://dsatya007.github.io/digital-pedia/blog/3-ai-workflows-one-week-challenge.html</guid>
+      <pubDate>Mon, 06 Apr 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Best AI Tools for Small Business in 2025: A Practical Guide</title>
+      <link>https://dsatya007.github.io/digital-pedia/blog/best-ai-tools-small-business-2025.html</link>
+      <description>A no-nonsense comparison of the AI tools that actually move the needle for small businesses and solopreneurs.</description>
+      <guid>https://dsatya007.github.io/digital-pedia/blog/best-ai-tools-small-business-2025.html</guid>
+      <pubDate>Sun, 06 Apr 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>AI Workflow Automation for Solopreneurs: The Complete 2025 Guide</title>
+      <link>https://dsatya007.github.io/digital-pedia/blog/ai-workflow-automation-solopreneurs.html</link>
+      <description>How to automate repetitive tasks with AI as a one-person business. Covers content creation, customer support, and admin.</description>
+      <guid>https://dsatya007.github.io/digital-pedia/blog/ai-workflow-automation-solopreneurs.html</guid>
+      <pubDate>Sun, 06 Apr 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>How to Use AI to Save Time as a Freelancer: 15 Practical Strategies</title>
+      <link>https://dsatya007.github.io/digital-pedia/blog/how-to-use-ai-save-time-freelancer.html</link>
+      <description>15 proven ways freelancers are using AI to save 10+ hours per week on client work.</description>
+      <guid>https://dsatya007.github.io/digital-pedia/blog/how-to-use-ai-save-time-freelancer.html</guid>
+      <pubDate>Sun, 06 Apr 2025 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
