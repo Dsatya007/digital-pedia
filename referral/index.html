@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Digital Pedia — Get Early Access to AI-Powered Digital Product Tools</title>
+    <meta name="description" content="Get exclusive early access to AI solopreneur cheat sheets, templates, and workflow frameworks. Join 2,000+ creators already on the waitlist.">
+    <meta property="og:title" content="Digital Pedia — The AI Solopreneur Playbook">
+    <meta property="og:description" content="Free cheat sheets, Notion templates, and AI workflow frameworks for solopreneurs. Join the waitlist now.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dsatya007.github.io/digital-pedia/referral/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dsatya007.github.io/digital-pedia/referral/">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-deeper: #4338ca;
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.15);
+            --bg-dark: #0f0f1a;
+            --bg: #131327;
+            --bg-card: #1a1a35;
+            --bg-input: #222245;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --border: rgba(99, 102, 241, 0.2);
+            --glow: rgba(99, 102, 241, 0.4);
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        /* Animated background gradient */
+        .bg-gradient {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 600px 400px at 20% 10%, rgba(99, 102, 241, 0.15) 0%, transparent 70%),
+                radial-gradient(ellipse 500px 350px at 80% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 700px 500px at 50% 90%, rgba(99, 102, 241, 0.1) 0%, transparent 70%),
+                var(--bg-dark);
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* NAV */
+        nav {
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 15, 26, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+        }
+        .logo span { color: var(--primary); }
+        .nav-cta {
+            background: var(--primary);
+            color: #fff;
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 5rem 0 4rem;
+            text-align: center;
+        }
+        .urgency-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+        .urgency-dot {
+            width: 8px; height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        @keyframes pulse-badge { 0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.2); } 50% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); } }
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.02em;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--primary), #a78bfa, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 620px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        /* WAITLIST FORM */
+        .waitlist-form {
+            max-width: 480px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .waitlist-form input[type="email"] {
+            flex: 1;
+            padding: 0.9rem 1.1rem;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            background: var(--bg-input);
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .waitlist-form input[type="email"]:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+        }
+        .waitlist-form input[type="email"]::placeholder { color: var(--text-dim); }
+        .waitlist-form button {
+            padding: 0.9rem 1.75rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-deeper));
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .waitlist-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35);
+        }
+        .form-note {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        /* SUCCESS/HIDDEN MESSAGE (shown via JS on form submit) */
+        .form-success {
+            display: none;
+            max-width: 480px;
+            margin: 0 auto 1.5rem;
+            padding: 1.5rem;
+            background: var(--accent-glow);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+            text-align: center;
+        }
+        .form-success h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .form-success p { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* SOCIAL PROOF COUNTERS */
+        .social-proof {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            padding: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        .proof-item { text-align: center; }
+        .proof-number {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .proof-label { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.15rem; }
+
+        /* VALUE PROPOSITION */
+        .value-section {
+            padding: 4rem 0 3rem;
+        }
+        .value-section h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .value-section > .container > p {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 550px;
+            margin: 0 auto 2.5rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .feature-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.75rem;
+            transition: all 0.25s;
+        }
+        .feature-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+        .feature-icon-circle {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        .icon-purple { background: rgba(99, 102, 241, 0.15); }
+        .icon-green { background: rgba(16, 185, 129, 0.15); }
+        .icon-blue { background: rgba(59, 130, 246, 0.15); }
+        .icon-orange { background: rgba(245, 158, 11, 0.15); }
+        .feature-item h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .feature-item p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+        /* PRODUCTS PREVIEW */
+        .products-section {
+            padding: 3rem 0;
+        }
+        .products-section h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .products-section > .container > p {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+        .product-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+        }
+        .product-preview {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: all 0.25s;
+            text-align: center;
+        }
+        .product-preview:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        .preview-image {
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+        }
+        .preview-gradient-1 { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+        .preview-gradient-2 { background: linear-gradient(135deg, #10b981, #059669); }
+        .preview-gradient-3 { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .preview-gradient-4 { background: linear-gradient(135deg, #ec4899, #db2777); }
+        .preview-gradient-5 { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+        .product-preview h4 { font-size: 0.92rem; font-weight: 700; padding: 0.15rem 1rem 0.15rem; }
+        .product-preview .price-tag {
+            display: inline-block;
+            padding: 0.2rem 0.7rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin: 0 0 0.75rem;
+        }
+        .price-free { background: rgba(16, 185, 129, 0.15); color: var(--accent); }
+        .price-27 { background: rgba(99, 102, 241, 0.15); color: #a78bfa; }
+        .price-47 { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+        .price-97 { background: rgba(236, 72, 153, 0.15); color: #f472b6; }
+        .product-preview .price-bundle { background: rgba(239, 68, 68, 0.15); color: #fca5a5; }
+
+        /* TESTIMONIALS */
+        .testimonial-section {
+            padding: 3rem 0;
+        }
+        .testimonial-section h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem;
+        }
+        .testimonial-text {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            font-style: italic;
+            line-height: 1.65;
+            margin-bottom: 1rem;
+        }
+        .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+        .testimonial-avatar {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .avatar-1 { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+        .avatar-2 { background: linear-gradient(135deg, #10b981, #059669); }
+        .avatar-3 { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .testimonial-name { font-size: 0.85rem; font-weight: 600; }
+        .testimonial-role { font-size: 0.75rem; color: var(--text-dim); }
+
+        /* REFERRAL PROGRAM */
+        .referral-section {
+            padding: 3rem 0;
+        }
+        .referral-box {
+            background: linear-gradient(135deg, var(--bg-card), rgba(99, 102, 241, 0.08));
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.12);
+        }
+        .referral-box h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+        }
+        .referral-box p { color: var(--text-muted); margin-bottom: 1.5rem; }
+        .referral-steps {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        .referral-step { text-align: center; max-width: 130px; }
+        .step-number {
+            width: 36px; height: 36px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+            margin: 0 auto 0.5rem;
+        }
+        .referral-step p { font-size: 0.8rem; color: var(--text-muted); }
+        .referral-step strong { color: #fff; }
+
+        /* FINAL CTA */
+        .final-cta {
+            padding: 4rem 0 3rem;
+            text-align: center;
+        }
+        .final-cta h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .final-cta p { color: var(--text-muted); margin-bottom: 2rem; font-size: 1rem; }
+        .final-cta .waitlist-form { max-width: 480px; margin: 0 auto; }
+        .spots-left {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        footer p { font-size: 0.8rem; color: var(--text-dim); }
+        footer a { color: var(--primary); text-decoration: none; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero { padding: 3.5rem 0 2.5rem; }
+            .waitlist-form { flex-direction: column; }
+            .social-proof { gap: 1.5rem; }
+            .referral-steps { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#" class="logo">Digital<span>Pedia</span></a>
+        <a href="#waitlist" class="nav-cta">Get Early Access</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="waitlist">
+        <div class="container">
+            <div class="urgency-badge">
+                <span class="urgency-dot"></span>
+                Open for Early Access — Limited Spots
+            </div>
+            <h1>
+                Stop Guessing With AI.<br>
+                <span class="highlight">Start Shipping Products.</span>
+            </h1>
+            <p class="hero-sub">
+                Copy-paste AI workflows, battle-tested templates, and visual frameworks
+                that helped 2,000+ solopreneurs save 10+ hours every single week.
+                Get the free starter pack — zero fluff, all action.
+            </p>
+
+            <!-- EMAIL CAPTURE FORM -->
+            <form class="waitlist-form" id="waitlistForm" action="#" method="POST" onsubmit="return handleSignup(event)">
+                <input type="email" id="emailInput" placeholder="Your best email address" required />
+                <button type="submit">Get Free Access</button>
+            </form>
+            <p class="form-note">Free forever. No credit card. Unsubscribe anytime.</p>
+
+            <div class="form-success" id="formSuccess">
+                <h3>You're in!</h3>
+                <p>Check your inbox for the free AI Solopreneur Starter Kit. We'll send the good stuff straight to you.</p>
+            </div>
+
+            <div class="social-proof">
+                <div class="proof-item">
+                    <div class="proof-number" id="counter1">2,147</div>
+                    <div class="proof-label">On the Waitlist</div>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-number">50</div>
+                    <div class="proof-label">Proven AI Workflows</div>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-number">4.9/5</div>
+                    <div class="proof-label">Average Rating</div>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-number">10h+</div>
+                    <div class="proof-label">Saved Per Week</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALUE PROPOSITIONS -->
+    <section class="value-section">
+        <div class="container">
+            <h2>Everything You Need. Nothing You Don't.</h2>
+            <p>Built by operators, not theorists. Here's what you get when you join.</p>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon-circle icon-purple">&#9889;</div>
+                    <h3>50 AI Workflows</h3>
+                    <p>Ready-to-use workflows for content creation, lead generation, market research, and automation. Copy, paste, done.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-circle icon-green">&#128196;</div>
+                    <h3>25 Business Templates</h3>
+                    <p>Notion workspaces, Google Sheets calculators, and PDF frameworks. Plug in your numbers and start tracking from day one.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-circle icon-blue">&#128200;</div>
+                    <h3>30 Visual Frameworks</h3>
+                    <p>Maps for every stage — from idea validation to building an audience to pricing and launching your first digital product.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-circle icon-orange">&#127919;</div>
+                    <h3>Step-by-Step Blueprints</h3>
+                    <p>The AI Automation Agency Blueprint gives you the full 21-chapter playbook, SOPs, and a 7-day launch plan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS PREVIEW -->
+    <section class="products-section">
+        <div class="container">
+            <h2>What You'll Get Access To</h2>
+            <p>Start free. Upgrade when you're ready.</p>
+            <div class="product-preview-grid">
+                <div class="product-preview">
+                    <div class="preview-image preview-gradient-2">📋</div>
+                    <h4>Top 10 AI Workflows</h4>
+                    <span class="price-tag price-free">FREE</span>
+                </div>
+                <div class="product-preview">
+                    <div class="preview-image preview-gradient-1">⚡</div>
+                    <h4>AI Solopreneur Cheat Sheet</h4>
+                    <span class="price-tag price-27">$27</span>
+                </div>
+                <div class="product-preview">
+                    <div class="preview-image preview-gradient-3">📊</div>
+                    <h4>30 Visual Frameworks</h4>
+                    <span class="price-tag price-47">$47</span>
+                </div>
+                <div class="product-preview">
+                    <div class="preview-image preview-gradient-4">📐</div>
+                    <h4>25 Business Templates</h4>
+                    <span class="price-tag price-47">$47</span>
+                </div>
+                <div class="product-preview">
+                    <div class="preview-image preview-gradient-5">🏆</div>
+                    <h4>Complete Bundle</h4>
+                    <span class="price-tag price-bundle">$197 (Save $74)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonial-section">
+        <div class="container">
+            <h2>What Creators Are Saying</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I went from spending hours manually researching keywords to having a fully automated content pipeline. The workflows paid for themselves in the first day."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar avatar-1">M</div>
+                        <div>
+                            <div class="testimonial-name">Maya K.</div>
+                            <div class="testimonial-role">Content Creator, 12K followers</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The Notion templates alone are worth it. I set up my entire solopreneur dashboard in 20 minutes on a Saturday morning."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar avatar-2">J</div>
+                        <div>
+                            <div class="testimonial-name">James T.</div>
+                            <div class="testimonial-role">Indie Hacker & Freelancer</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Honestly? I was skeptical. But the agency blueprint walked me through client outreach and I landed my second retainer within three weeks."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar avatar-3">A</div>
+                        <div>
+                            <div class="testimonial-name">Alicia R.</div>
+                            <div class="testimonial-role">Side Hustler → $4K/mo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REFERRAL PROGRAM -->
+    <section class="referral-section">
+        <div class="container">
+            <div class="referral-box">
+                <h2>Refer Friends, Unlock Premium Content</h2>
+                <p>Share your unique referral link after signing up. Every person who joins pushes you closer to free premium products.</p>
+                <div class="referral-steps">
+                    <div class="referral-step">
+                        <div class="step-number">1</div>
+                        <p><strong>Sign up</strong><br>Enter your email above</p>
+                    </div>
+                    <div class="referral-step">
+                        <div class="step-number">2</div>
+                        <p><strong>Share your link</strong><br>Get your personal referral URL</p>
+                    </div>
+                    <div class="referral-step">
+                        <div class="step-number">3</div>
+                        <p><strong>Earn perks</strong><br>5 refs = bonus content<br>15 refs = free premium product<br>30 refs = lifetime access to everything</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to Build Something Real?</h2>
+            <p>Join 2,000+ solopreneurs who stopped spinning and started shipping.</p>
+            <form class="waitlist-form" id="waitlistForm2" action="#" method="POST" onsubmit="return handleSignup2(event)">
+                <input type="email" id="emailInput2" placeholder="Your email address" required />
+                <button type="submit">Join the Waitlist</button>
+            </form>
+            <div class="form-success" id="formSuccess2" style="display:none;">
+                <h3>You're in!</h3>
+                <p>Welcome to Digital Pedia. Check your inbox for your free starter kit.</p>
+            </div>
+            <div class="spots-left" id="spotsLeft">Only 853 spots remaining in early access</div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 <a href="#">Digital Pedia</a>. All rights reserved. Built for creators who ship.</p>
+        </div>
+    </footer>
+
+    <!-- Minimal JS for form handling -->
+    <script>
+        function handleSignup(e) {
+            e.preventDefault();
+            var email = document.getElementById('emailInput').value;
+            if (email) {
+                // Store lead locally and sync when lead-sync.js loads
+                var leads = JSON.parse(localStorage.getItem('dp_leads') || '[]');
+                leads.push({ email: email, source: 'referral-landing', timestamp: new Date().toISOString() });
+                localStorage.setItem('dp_leads', JSON.stringify(leads));
+                document.getElementById('waitlistForm').style.display = 'none';
+                document.getElementById('formSuccess').style.display = 'block';
+                document.querySelector('.form-note').style.display = 'none';
+            }
+            return false;
+        }
+        function handleSignup2(e) {
+            e.preventDefault();
+            var email = document.getElementById('emailInput2').value;
+            if (email) {
+                var leads = JSON.parse(localStorage.getItem('dp_leads') || '[]');
+                leads.push({ email: email, source: 'referral-landing-bottom', timestamp: new Date().toISOString() });
+                localStorage.setItem('dp_leads', JSON.stringify(leads));
+                document.getElementById('waitlistForm2').style.display = 'none';
+                document.getElementById('formSuccess2').style.display = 'block';
+            }
+            return false;
+        }
+        // Animate waitlist counter
+        (function(){
+            var el = document.getElementById('counter1');
+            if (!el) return;
+            var target = 2147;
+            var current = 0;
+            var step = Math.ceil(target / 60);
+            var interval = setInterval(function(){
+                current += step;
+                if (current >= target) { current = target; clearInterval(interval); }
+                el.textContent = current.toLocaleString();
+            }, 30);
+        })();
+    </script>
+</body>
+</html>
