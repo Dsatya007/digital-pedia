@@ -98,6 +98,18 @@
         .email-capture { background: var(--bg-alt); padding: 4rem 2rem; text-align: center; }
         .email-form { display: flex; max-width: 400px; margin: 1.5rem auto 0; gap: 0.5rem; }
         .email-input { flex: 1; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; }
+        /* Referral Section */
+        .referral { padding: 4rem 2rem; background: linear-gradient(135deg, #f0fdf4, #dcfce7); }
+        .referral-card { max-width: 800px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 8px 25px rgba(0,0,0,0.06); }
+        .referral-steps { display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+        .referral-step { text-align: center; max-width: 180px; }
+        .referral-step-num { width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-weight: 700; font-size: 1.1rem; }
+        .referral-step h4 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+        .referral-step p { font-size: 0.8rem; color: var(--text-muted); }
+        .referral-step-arrow { font-size: 1.5rem; color: var(--primary); }
+        .referral-code-display { background: var(--bg-alt); padding: 0.75rem 1rem; border-radius: 8px; display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; }
+        .referral-code-display input { flex: 1; border: 1px solid var(--border); border-radius: 6px; padding: 0.5rem; font-size: 0.9rem; background: #fff; }
+        .referral-code-display button { padding: 0.5rem 1rem; background: var(--accent); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 600; }
         .faq { padding: 4rem 2rem; max-width: 800px; margin: 0 auto; }
         .faq-item { border-bottom: 1px solid var(--border); }
         .faq-q { padding: 1.5rem 0; cursor: pointer; display: flex; justify-content: space-between; font-weight: 600; }
@@ -170,7 +182,9 @@
             .paypal-buy-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0.75rem 1.5rem; }
             /* Sticky CTA - text hidden on mobile */
             .sticky-cta-header { font-size: 0.85rem; padding: 0.5rem 1rem; }
+            .sticky-cta-header.immediate { top: 0; }
             .sticky-cta-text { display: none; }
+            .sticky-cta-btn { width: 100%; text-align: center; }
         }
 
         /* Large phones (max-width: 640px) */
@@ -422,18 +436,26 @@
             box-shadow: 0 4px 12px rgba(99,102,241,0.3);
         }
         .sticky-cta-header.visible { top: 52px; }
+        .sticky-cta-header.immediate { top: 0; }
         .sticky-cta-text { font-weight: 500; }
+        .sticky-cta-text .urgency-pulse { color: #fbbf24; animation: blink 1.5s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
         .sticky-cta-btn {
-            background: #fff;
-            color: var(--primary);
+            background: #fbbf24;
+            color: #1e293b;
             padding: 0.5rem 1.5rem;
             border-radius: 6px;
-            font-weight: 700;
+            font-weight: 800;
             text-decoration: none;
             font-size: 0.9rem;
             transition: transform 0.2s;
+            animation: cta-bounce 2s infinite;
         }
-        .sticky-cta-btn:hover { transform: scale(1.05); }
+        .sticky-cta-btn:hover { transform: scale(1.08); }
+        @keyframes cta-bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
 
         /* NEW: Product Comparison Table */
         .comparison-section { padding: 4rem 2rem; background: var(--bg); }
@@ -533,325 +555,349 @@
 
     <!-- JSON-LD Schema Markup for Google Rich Results -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "Organization",
+      "@id": "https://dsatya007.github.io/digital-pedia/#organization",
+      "name": "Digital Pedia",
+      "url": "https://dsatya007.github.io/digital-pedia/",
+      "description": "Ready-made AI cheat sheets, templates, and visual frameworks for digital product entrepreneurs.",
+      "sameAs": []
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
-          "@type": "Organization",
-          "@id": "https://dsatya007.github.io/digital-pedia/#organization",
-          "name": "Digital Pedia",
-          "url": "https://dsatya007.github.io/digital-pedia/",
-          "description": "Ready-made AI cheat sheets, templates, and visual frameworks for digital product entrepreneurs.",
-          "sameAs": []
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://dsatya007.github.io/digital-pedia/"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://dsatya007.github.io/digital-pedia/#website",
+      "url": "https://dsatya007.github.io/digital-pedia/",
+      "name": "Digital Pedia",
+      "publisher": {
+        "@id": "https://dsatya007.github.io/digital-pedia/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://dsatya007.github.io/digital-pedia/#webpage",
+      "url": "https://dsatya007.github.io/digital-pedia/",
+      "name": "Digital Pedia - AI Solopreneur Cheat Sheet, Templates & Frameworks",
+      "isPartOf": {
+        "@id": "https://dsatya007.github.io/digital-pedia/#website"
+      },
+      "about": {
+        "@id": "https://dsatya007.github.io/digital-pedia/#organization"
+      },
+      "description": "50 copy-paste AI workflows, 25 business templates, and 30 visual frameworks to launch and scale your digital product business. Save 10+ hours per week."
+    },
+    {
+      "@type": "Product",
+      "name": "The AI Solopreneur Cheat Sheet",
+      "image": "https://dsatya007.github.io/digital-pedia/images/products/thumb-cheatsheet.png",
+      "description": "50 copy-paste AI workflows with visual diagrams and pro tips. Saves 10+ hours per week. 42 pages of actionable content.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Digital Pedia"
+      },
+      "sku": "DP-AI-SC-001",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://dsatya007.github.io/digital-pedia/",
+        "priceCurrency": "USD",
+        "price": "47.00",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@id": "https://dsatya007.github.io/digital-pedia/#organization"
+        },
+        "priceValidUntil": "2026-12-31",
+        "validFrom": "2026-01-01"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "127",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Alex M."
+          },
+          "reviewBody": "The cheat sheet saved me over 8 hours in my first week. The AI workflows are practical and well-documented.",
+          "datePublished": "2026-02-18"
         },
         {
-          "@type": "WebSite",
-          "@id": "https://dsatya007.github.io/digital-pedia/#website",
-          "url": "https://dsatya007.github.io/digital-pedia/",
-          "name": "Digital Pedia",
-          "publisher": {
-            "@id": "https://dsatya007.github.io/digital-pedia/#organization"
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Jordan K."
+          },
+          "reviewBody": "Bought this and the template pack. Best $74 I've spent on my side hustle setup. The Notion templates are immediately usable.",
+          "datePublished": "2026-03-05"
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "4",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Sam T."
+          },
+          "reviewBody": "Great starter resource for anyone building an AI-based digital product business. Could use more advanced topics but perfect for beginners.",
+          "datePublished": "2026-03-28"
+        }
+      ]
+    },
+    {
+      "@type": "Product",
+      "name": "30 Visual Frameworks for Digital Products",
+      "image": "https://dsatya007.github.io/digital-pedia/images/products/thumb-frameworks.png",
+      "description": "Full-page visual frameworks from ideation to scaling. Includes flowcharts, infographics, and step-by-step guides.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Digital Pedia"
+      },
+      "sku": "DP-VF-002",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://dsatya007.github.io/digital-pedia/",
+        "priceCurrency": "USD",
+        "price": "27.00",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@id": "https://dsatya007.github.io/digital-pedia/#organization"
+        },
+        "priceValidUntil": "2026-12-31",
+        "validFrom": "2026-01-01"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.7",
+        "reviewCount": "89",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "25 Business Templates for Digital Products",
+      "image": "https://dsatya007.github.io/digital-pedia/images/products/thumb-templates.png",
+      "description": "Notion workspace, Google Sheets, and PDF templates for running a digital product business from launch to scale.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Digital Pedia"
+      },
+      "sku": "DP-BT-003",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://dsatya007.github.io/digital-pedia/",
+        "priceCurrency": "USD",
+        "price": "27.00",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@id": "https://dsatya007.github.io/digital-pedia/#organization"
+        },
+        "priceValidUntil": "2026-12-31",
+        "validFrom": "2026-01-01"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "103",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "The AI Solopreneur Playbook",
+      "image": "https://dsatya007.github.io/digital-pedia/images/products/thumb-playbook.png",
+      "description": "150+ page comprehensive guide with templates, frameworks, 90-day action plan, and community access.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Digital Pedia"
+      },
+      "sku": "DP-PB-004",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://dsatya007.github.io/digital-pedia/",
+        "priceCurrency": "USD",
+        "price": "97.00",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@id": "https://dsatya007.github.io/digital-pedia/#organization"
+        },
+        "priceValidUntil": "2026-12-31",
+        "validFrom": "2026-01-01"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "64",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Digital Product Starter Bundle",
+      "image": "https://dsatya007.github.io/digital-pedia/images/products/thumb-playbook.png",
+      "description": "Complete bundle: Cheat Sheet + 25 Templates + 30 Frameworks + Playbook. Everything you need to start, grow, and scale.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Digital Pedia"
+      },
+      "sku": "DP-BUNDLE-005",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://dsatya007.github.io/digital-pedia/",
+        "priceCurrency": "USD",
+        "price": "147.00",
+        "availability": "https://schema.org/InStock",
+        "priceReferenceCurrency": "USD",
+        "listPrice": "201.00",
+        "seller": {
+          "@id": "https://dsatya007.github.io/digital-pedia/#organization"
+        },
+        "priceValidUntil": "2026-12-31",
+        "validFrom": "2026-01-01"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "45",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What format are the products?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "All products are downloadable PDF files. The template pack includes additional Notion workspace links and Google Sheets."
           }
         },
         {
-          "@type": "WebPage",
-          "@id": "https://dsatya007.github.io/digital-pedia/#webpage",
-          "url": "https://dsatya007.github.io/digital-pedia/",
-          "name": "Digital Pedia - AI Solopreneur Cheat Sheet, Templates & Frameworks",
-          "isPartOf": {
-            "@id": "https://dsatya007.github.io/digital-pedia/#website"
-          },
-          "about": {
-            "@id": "https://dsatya007.github.io/digital-pedia/#organization"
-          },
-          "description": "50 copy-paste AI workflows, 25 business templates, and 30 visual frameworks to launch and scale your digital product business. Save 10+ hours per week."
-        },
-        {
-          "@type": "Product",
-          "name": "The AI Solopreneur Cheat Sheet",
-          "image": "https://dsatya007.github.io/digital-pedia/images/products/thumb-cheatsheet.png",
-          "description": "50 copy-paste AI workflows with visual diagrams and pro tips. Saves 10+ hours per week. 42 pages of actionable content.",
-          "brand": {
-            "@type": "Brand",
-            "name": "Digital Pedia"
-          },
-          "sku": "DP-AI-SC-001",
-          "offers": {
-            "@type": "Offer",
-            "url": "https://paypal.me/Dvenky007/47",
-            "priceCurrency": "USD",
-            "price": "47.00",
-            "availability": "https://schema.org/InStock",
-            "seller": {
-              "@id": "https://dsatya007.github.io/digital-pedia/#organization"
-            }
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "127",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
-          "review": [
-            {
-              "@type": "Review",
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": "5",
-                "bestRating": "5"
-              },
-              "author": {
-                "@type": "Person",
-                "name": "Alex M."
-              },
-              "reviewBody": "The cheat sheet saved me over 8 hours in my first week. The AI workflows are practical and well-documented."
-            },
-            {
-              "@type": "Review",
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": "5",
-                "bestRating": "5"
-              },
-              "author": {
-                "@type": "Person",
-                "name": "Jordan K."
-              },
-              "reviewBody": "Bought this and the template pack. Best $74 I've spent on my side hustle setup. The Notion templates are immediately usable."
-            },
-            {
-              "@type": "Review",
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": "4",
-                "bestRating": "5"
-              },
-              "author": {
-                "@type": "Person",
-                "name": "Sam T."
-              },
-              "reviewBody": "Great starter resource for anyone building an AI-based digital product business. Could use more advanced topics but perfect for beginners."
-            }
-          ]
-        },
-        {
-          "@type": "Product",
-          "name": "30 Visual Frameworks for Digital Products",
-          "image": "https://dsatya007.github.io/digital-pedia/images/products/thumb-frameworks.png",
-          "description": "Full-page visual frameworks from ideation to scaling. Includes flowcharts, infographics, and step-by-step guides.",
-          "brand": {
-            "@type": "Brand",
-            "name": "Digital Pedia"
-          },
-          "sku": "DP-VF-002",
-          "offers": {
-            "@type": "Offer",
-            "url": "https://paypal.me/Dvenky007/27",
-            "priceCurrency": "USD",
-            "price": "27.00",
-            "availability": "https://schema.org/InStock",
-            "seller": {
-              "@id": "https://dsatya007.github.io/digital-pedia/#organization"
-            }
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.7",
-            "reviewCount": "89",
-            "bestRating": "5",
-            "worstRating": "1"
+          "@type": "Question",
+          "name": "How do I receive my purchase?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Instant download after payment. The PDF is delivered immediately through a secure download link."
           }
         },
         {
-          "@type": "Product",
-          "name": "25 Business Templates for Digital Products",
-          "image": "https://dsatya007.github.io/digital-pedia/images/products/thumb-templates.png",
-          "description": "Notion workspace, Google Sheets, and PDF templates for running a digital product business from launch to scale.",
-          "brand": {
-            "@type": "Brand",
-            "name": "Digital Pedia"
-          },
-          "sku": "DP-BT-003",
-          "offers": {
-            "@type": "Offer",
-            "url": "https://paypal.me/Dvenky007/27",
-            "priceCurrency": "USD",
-            "price": "27.00",
-            "availability": "https://schema.org/InStock",
-            "seller": {
-              "@id": "https://dsatya007.github.io/digital-pedia/#organization"
-            }
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "103",
-            "bestRating": "5",
-            "worstRating": "1"
+          "@type": "Question",
+          "name": "Is the cheat sheet worth the price?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each workflow saves about 10 minutes. 50 workflows means 500 minutes saved. At $47 you pay less than a dollar per workflow."
           }
         },
         {
-          "@type": "Product",
-          "name": "The AI Solopreneur Playbook",
-          "image": "https://dsatya007.github.io/digital-pedia/images/products/thumb-playbook.png",
-          "description": "150+ page comprehensive guide with templates, frameworks, 90-day action plan, and community access.",
-          "brand": {
-            "@type": "Brand",
-            "name": "Digital Pedia"
-          },
-          "sku": "DP-PB-004",
-          "offers": {
-            "@type": "Offer",
-            "url": "https://paypal.me/Dvenky007/97",
-            "priceCurrency": "USD",
-            "price": "97.00",
-            "availability": "https://schema.org/InStock",
-            "seller": {
-              "@id": "https://dsatya007.github.io/digital-pedia/#organization"
-            }
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "64",
-            "bestRating": "5",
-            "worstRating": "1"
+          "@type": "Question",
+          "name": "Can I get a refund?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Contact us directly and we will work it out. 30-day money-back guarantee."
           }
         },
         {
-          "@type": "Product",
-          "name": "Digital Product Starter Bundle",
-          "image": "https://dsatya007.github.io/digital-pedia/images/products/thumb-playbook.png",
-          "description": "Complete bundle: Cheat Sheet + 25 Templates + 30 Frameworks + Playbook. Everything you need to start, grow, and scale.",
-          "brand": {
-            "@type": "Brand",
-            "name": "Digital Pedia"
-          },
-          "sku": "DP-BUNDLE-005",
-          "offers": {
-            "@type": "Offer",
-            "url": "https://paypal.me/Dvenky007/147",
-            "priceCurrency": "USD",
-            "price": "147.00",
-            "availability": "https://schema.org/InStock",
-            "priceReferenceCurrency": "USD",
-            "listPrice": "201.00",
-            "seller": {
-              "@id": "https://dsatya007.github.io/digital-pedia/#organization"
-            }
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "45",
-            "bestRating": "5",
-            "worstRating": "1"
+          "@type": "Question",
+          "name": "Do I need AI experience to use these products?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All products are designed for beginners and experienced users alike. Each workflow comes with step-by-step instructions and copy-paste prompts."
           }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What format are the products?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "All products are downloadable PDF files. The template pack includes additional Notion workspace links and Google Sheets."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How do I receive my purchase?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Instant download after payment. The PDF is delivered immediately through a secure download link."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Is the cheat sheet worth the price?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Each workflow saves about 10 minutes. 50 workflows means 500 minutes saved. At $47 you pay less than a dollar per workflow."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I get a refund?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Contact us directly and we will work it out. 30-day money-back guarantee."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Do I need AI experience to use these products?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No. All products are designed for beginners and experienced users alike. Each workflow comes with step-by-step instructions and copy-paste prompts."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How quickly can I start making money with these?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Many users report launching their first product within 5-7 days using our framework. The templates are ready to use and require minimal customization."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What's included in the Digital Product Starter Bundle?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "The bundle includes the AI Solopreneur Cheat Sheet ($47), 25 Business Templates ($27), 30 Visual Frameworks ($27), and the AI Solopreneur Playbook ($97). That's $201 worth of content for just $147 -- a $54 savings."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Do I need any technical skills to use these?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No. Everything is designed for beginners. The workflows are copy-paste ready, and templates come with step-by-step instructions."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Will the content become outdated?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "All products receive free lifetime updates. When we update content, you get an email with the new download link."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I use these for my own clients or business?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Absolutely. These are personal and commercial use licenses. You can apply the workflows and templates to your own projects and client work."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How payment methods do you accept?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "We accept all major payment methods through PayPal -- credit/debit cards, Apple Pay, Google Pay, and PayPal balance."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Is there support if I get stuck?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. Email us anytime at support@digitalpedia.co and we typically respond within 24 hours."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "How quickly can I start making money with these?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Many users report launching their first product within 5-7 days using our framework. The templates are ready to use and require minimal customization."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's included in the Digital Product Starter Bundle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The bundle includes the AI Solopreneur Cheat Sheet ($47), 25 Business Templates ($27), 30 Visual Frameworks ($27), and the AI Solopreneur Playbook ($97). That's $201 worth of content for just $147 -- a $54 savings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need any technical skills to use these?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Everything is designed for beginners. The workflows are copy-paste ready, and templates come with step-by-step instructions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will the content become outdated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "All products receive free lifetime updates. When we update content, you get an email with the new download link."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use these for my own clients or business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. These are personal and commercial use licenses. You can apply the workflows and templates to your own projects and client work."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How payment methods do you accept?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We accept all major payment methods through PayPal -- credit/debit cards, Apple Pay, Google Pay, and PayPal balance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there support if I get stuck?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Email us anytime at support@digitalpedia.co and we typically respond within 24 hours."
+          }
         }
       ]
     }
+  ]
+}
     </script>
     <!-- END JSON-LD Schema Markup -->
 </head>
@@ -869,8 +915,8 @@
 
     <!-- Sticky CTA Header -->
     <div class="sticky-cta-header" id="sticky-cta">
-        <span class="sticky-cta-text">&#9889; Launch pricing -- save $101 on the ultimate bundle</span>
-        <a href="#bundle" class="sticky-cta-btn">Get the Bundle - $127</a>
+        <span class="sticky-cta-text">&#9889; Launch pricing -- <span class="urgency-pulse">&#128337; SAVE $101</span> on the ultimate bundle</span>
+        <a href="#bundle" class="sticky-cta-btn">Get the Bundle - $127 &#128293;</a>
     </div>
 
 
@@ -1544,21 +1590,26 @@
         })();
 
         // ============================================================
-        // STICKY CTA HEADER - Shows on scroll, hides at top
+        // STICKY CTA HEADER - Shows on scroll earlier, always visible on mobile
         // ============================================================
         (function() {
             var sticky = document.getElementById('sticky-cta');
             if (sticky) {
-                var lastScrollY = 0;
                 window.addEventListener('scroll', function() {
                     var scrollY = window.scrollY;
-                    if (scrollY > 400) {
+                    // Show after just 150px scroll (was 400px)
+                    if (scrollY > 150) {
                         sticky.classList.add('visible');
+                        sticky.classList.remove('immediate');
                     } else {
                         sticky.classList.remove('visible');
+                        sticky.classList.remove('immediate');
                     }
-                    lastScrollY = scrollY;
                 });
+                // Mobile: always visible on scroll
+                if (window.innerWidth <= 768) {
+                    sticky.classList.add('immediate');
+                }
             }
         })();
 
