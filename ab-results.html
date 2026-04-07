@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A/B Test Results Dashboard - Digital Pedia</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; }
+        .header { background: linear-gradient(135deg, #6366f1, #9333ea); color: #fff; padding: 2rem; text-align: center; }
+        .header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .header p { opacity: 0.8; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+        .summary-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .summary-card { background: #fff; border-radius: 12px; padding: 1.5rem; border: 1px solid #e2e8f0; text-align: center; }
+        .summary-card h3 { font-size: 0.85rem; color: #64748b; margin-bottom: 0.5rem; }
+        .summary-card .num { font-size: 2.5rem; font-weight: 800; color: #6366f1; }
+        .experiment-card { background: #fff; border-radius: 12px; padding: 2rem; border: 1px solid #e2e8f0; margin-bottom: 1.5rem; }
+        .experiment-card h2 { font-size: 1.3rem; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 2px solid #f1f5f9; }
+        .variant-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; padding: 0.75rem; background: #f8fafc; border-radius: 8px; }
+        .variant-label { font-weight: 600; min-width: 40px; }
+        .variant-name { color: #64748b; font-size: 0.85rem; min-width: 200px; }
+        .variant-bar-container { flex: 1; }
+        .variant-bar { height: 24px; background: #6366f1; border-radius: 4px; transition: width 0.5s ease; display: flex; align-items: center; justify-content: flex-end; padding: 0 0.5rem; }
+        .variant-count { font-size: 0.75rem; color: #fff; font-weight: 600; white-space: nowrap; }
+        .winner-badge { background: #10b981; color: #fff; padding: 0.15rem 0.5rem; border-radius: 50px; font-size: 0.7rem; font-weight: 700; margin-left: 0.5rem; }
+        .empty-state { text-align: center; padding: 3rem; color: #64748b; }
+        .refresh-btn { background: #6366f1; color: #fff; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 600; }
+        .refresh-btn:hover { background: #4f46e5; }
+        .export-section { margin-top: 2rem; padding-top: 1.5rem; border-top: 2px solid #f1f5f9; }
+        .raw-conversions { background: #f1f5f9; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.8rem; font-family: monospace; max-height: 400px; overflow-y: auto; }
+        @media(max-width:768px) {
+            .variant-row { flex-direction: column; align-items: flex-start; }
+            .variant-name { min-width: unset; }
+            .variant-bar-container { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>A/B Test Results Dashboard</h1>
+        <p>Digital Pedia — Conversion Optimization</p>
+        <div style="margin-top:1rem;">
+            <button class="refresh-btn" onclick="renderResults()">Refresh Data</button>
+            <button class="refresh-btn" style="margin-left:0.5rem;background:#ef4444;" onclick="clearData()">Clear All Data</button>
+            <button class="refresh-btn" style="margin-left:0.5rem;background:#10b981;" onclick="exportData()">Export JSON</button>
+        </div>
+    </div>
+
+    <div class="container" id="results">
+        <div class="empty-state">Loading data...</div>
+    </div>
+
+    <script src="js/ab-testing.js"></script>
+    <script>
+    function renderResults() {
+        var conversions = JSON.parse(localStorage.getItem('ab_conversions') || '[]');
+        var container = document.getElementById('results');
+
+        if (conversions.length === 0) {
+            container.innerHTML = '<div class="empty-state"><h3>No A/B Test Data Yet</h3><p>Visit the <a href="index.html">landing page</a> and interact with it to start collecting data.</p></div>';
+            return;
+        }
+
+        var totalPageViews = conversions.filter(function(c) { return c.event === 'page_view'; }).length;
+        var totalClicks = conversions.filter(function(c) { return c.event === 'cta_click'; }).length;
+        var totalSignups = conversions.filter(function(c) { return c.event === 'email_signup' || c.event === 'email_submit'; }).length;
+        var clickRate = totalPageViews > 0 ? ((totalClicks / totalPageViews) * 100).toFixed(1) : '0.0';
+
+        var html = '<div class="summary-cards">';
+        html += '<div class="summary-card"><h3>Page Views</h3><div class="num">' + totalPageViews + '</div></div>';
+        html += '<div class="summary-card"><h3>CTA Clicks</h3><div class="num">' + totalClicks + '</div></div>';
+        html += '<div class="summary-card"><h3>Email Sign-ups</h3><div class="num">' + totalSignups + '</div></div>';
+        html += '<div class="summary-card"><h3>Click Rate</h3><div class="num">' + clickRate + '%</div></div>';
+        html += '</div>';
+
+        // Experiment breakdown
+        var experiments = window.ABTest.getConfig().experiments;
+        for (var expKey in experiments) {
+            var exp = experiments[expKey];
+            html += '<div class="experiment-card"><h2>' + exp.name + '</h2>';
+
+            var maxConversions = 0;
+            var variantCounts = {};
+            for (var v in exp.variants) {
+                var count = conversions.filter(function(c) { return c[expKey] === v; });
+                variantCounts[v] = { count: count.length, name: exp.variants[v].name };
+                if (count.length > maxConversions) maxConversions = count.length;
+            }
+
+            for (var v2 in variantCounts) {
+                var vc = variantCounts[v2];
+                var isWinner = vc.count === maxConversions && vc.count > 0;
+                var pct = maxConversions > 0 ? ((vc.count / maxConversions) * 100).toFixed(0) : 0;
+                html += '<div class="variant-row">';
+                html += '<span class="variant-label">' + v2 + (isWinner ? ' <span class="winner-badge">LEADER</span>' : '') + '</span>';
+                html += '<span class="variant-name">' + vc.name + '</span>';
+                html += '<div class="variant-bar-container"><div class="variant-bar" style="width:' + pct + '%"><span class="variant-count">' + vc.count + '</span></div></div>';
+                html += '</div>';
+            }
+            html += '</div>';
+        }
+
+        // Recent activity log
+        html += '<div class="experiment-card"><h2>Recent Activity (last 20 events)</h2>';
+        html += '<div class="raw-conversions">';
+        var recent = conversions.slice(-20).reverse();
+        for (var i = 0; i < recent.length; i++) {
+            var e = recent[i];
+            html += '<div>[' + new Date(e.timestamp).toLocaleString() + '] ' + e.event + ' — H:' + e.headline + ' CTA:' + e.cta + ' Price:' + e.pricing + '</div>';
+        }
+        html += '</div></div>';
+
+        // Export raw data
+        html += '<div class="export-section">';
+        html += '<h3>Export Raw Data</h3>';
+        html += '<pre class="raw-conversions" id="raw-data">' + JSON.stringify(conversions, null, 2) + '</pre>';
+        html += '</div>';
+
+        container.innerHTML = html;
+    }
+
+    function clearData() {
+        if (confirm('Clear all A/B test data? This cannot be undone.')) {
+            localStorage.removeItem('ab_conversions');
+            localStorage.removeItem('ab_headline_variant');
+            localStorage.removeItem('ab_cta_variant');
+            localStorage.removeItem('ab_pricing_variant');
+            renderResults();
+        }
+    }
+
+    function exportData() {
+        var data = localStorage.getItem('ab_conversions') || '[]';
+        var blob = new Blob([data], { type: 'application/json' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'ab-test-results-' + new Date().toISOString().split('T')[0] + '.json';
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+
+    // Also send data to server-side analytics tracker if available
+    function syncToServer() {
+        var conversions = JSON.parse(localStorage.getItem('ab_conversions') || '[]');
+        if (conversions.length > 0 && window.Analytics) {
+            // Try to sync with server-side tracker
+            window.Analytics.event('ab_sync', { count: conversions.length });
+        }
+    }
+
+    renderResults();
+    setInterval(renderResults, 30000); // Auto-refresh every 30s
+    </script>
+</body>
+</html>
