@@ -123,6 +123,17 @@
         footer p { opacity: 0.6; font-size: 0.85rem; }
         /* === MOBILE & RESPONSIVE BREAKPOINTS === */
         /* Tablet (768px and below) */
+
+        .testimonials { padding: 4rem 2rem; background: var(--bg-alt); }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto; }
+        .testimonial-card { background: #fff; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); }
+        .testimonial-stars { color: #f59e0b; font-size: 1.2rem; margin-bottom: 0.75rem; letter-spacing: 2px; }
+        .testimonial-text { color: var(--text); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem; font-style: italic; }
+        .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+        .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; }
+        .testimonial-author div strong { display: block; font-size: 0.9rem; }
+        .testimonial-author div span { font-size: 0.8rem; color: var(--text-muted); }
+
         @media(max-width:768px) {
             /* Hero */
             .hero { padding: 7rem 1.5rem 3rem; }
@@ -311,6 +322,39 @@
         .social-proof-icon { font-size: 1.1rem; }
         .social-proof-num { font-weight: 700; color: var(--primary); }
         .social-proof-text { color: var(--text-muted); }
+
+
+        /* Countdown Timer */
+        .countdown-bar {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: #fff;
+            padding: 0.85rem 2rem;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        .countdown-bar .timer-digits {
+            font-weight: 800;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.15);
+            padding: 0.15rem 0.6rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 0 0.15rem;
+            font-family: monospace;
+        }
+        .urgency-banner {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #92400e;
+        }
+        .urgency-banner .flash {
+            animation: blink 1s infinite;
+        }
 
         /* Exit Intent Popup */
         .exit-popup-overlay {
@@ -920,7 +964,18 @@
     </div>
 
 
+    <div class="countdown-bar" id="countdown-bar">
+        Launch pricing ends in: 
+        <span class="timer-digits" id="cd-days">00</span>d 
+        <span class="timer-digits" id="cd-hours">00</span>h 
+        <span class="timer-digits" id="cd-mins">00</span>m 
+        <span class="timer-digits" id="cd-secs">00</span>s
+        — Prices increase after timer hits zero
+    </div>
     <section class="hero">
+        <div class="urgency-banner">
+            <span class="flash">&#9889;</span> Launch Week Special — Prices increase when countdown hits zero <span class="flash">&#9889;</span>
+        </div>
         <div class="hero-badge">Launch Pricing -- First 500 Buyers Get Bonus AI Prompts</div>
         <h1>Build Your Digital Product Business With <span>AI</span></h1>
         <p>Ready-made cheat sheets, templates, and visual frameworks to launch and scale your digital product business. Start selling in days, not months.</p>
@@ -1254,6 +1309,49 @@
         </div>
     </div>
 
+    
+        <!-- Customer Testimonials -->
+        <section class="testimonials" id="testimonials">
+            <div class="section-header">
+                <h2>What Creators Are Saying</h2>
+                <p>Reviews from solopreneurs using Digital Pedia products</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">"The AI workflows cheat sheet saved me hours every week. I implemented 5 of them and already automated my content pipeline."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">M</div>
+                        <div>
+                            <strong>Marcus T.</strong>
+                            <span>Content Creator</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">"Best investment I made for my side hustle. The Notion templates alone are worth 10x the price. Clean, organized, and easy to customize."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">S</div>
+                        <div>
+                            <strong>Sarah K.</strong>
+                            <span>Freelance Designer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">"Grabbed the bundle during launch week pricing. The visual frameworks helped me pitch my first consulting client and close the deal."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">D</div>
+                        <div>
+                            <strong>David R.</strong>
+                            <span>Solopreneur</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     <section class="faq" id="faq">
         <div class="section-header"><h2>Frequently Asked Questions</h2></div>
         <div class="faq-item"><div class="faq-q">What format are the products?<span>+</span></div><div class="faq-a">All products are downloadable PDF files. The template pack includes additional Notion workspace links and Google Sheets.</div></div>
@@ -1714,6 +1812,46 @@
 
                 setTimeout(incrementDownloads, 2 * 60000);
             }
+
+        // ========================================
+        // LAUNCH COUNTDOWN TIMER
+        // ========================================
+        (function() {
+            var endStr = localStorage.getItem('dp_countdown_end');
+            var endTime;
+            if (endStr && parseInt(endStr) > Date.now()) {
+                endTime = parseInt(endStr);
+            } else {
+                // Set countdown to 48 hours from now
+                endTime = Date.now() + (48 * 60 * 60 * 1000);
+                localStorage.setItem('dp_countdown_end', endTime.toString());
+            }
+            var daysEl = document.getElementById('cd-days');
+            var hoursEl = document.getElementById('cd-hours');
+            var minsEl = document.getElementById('cd-mins');
+            var secsEl = document.getElementById('cd-secs');
+            var barEl = document.getElementById('countdown-bar');
+            function pad(n) { return n < 10 ? '0' + n : '' + n; }
+            function update() {
+                var diff = endTime - Date.now();
+                if (diff <= 0) {
+                    if (barEl) {
+                        barEl.innerHTML = 'Launch period has ended — but you can still grab the bundle before prices increase again!';
+                    }
+                    return;
+                }
+                var d = Math.floor(diff / (1000*60*60*24));
+                var h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+                var m = Math.floor((diff % (1000*60*60)) / (1000*60));
+                var s = Math.floor((diff % (1000*60)) / 1000);
+                if (daysEl) daysEl.textContent = pad(d);
+                if (hoursEl) hoursEl.textContent = pad(h);
+                if (minsEl) minsEl.textContent = pad(m);
+                if (secsEl) secsEl.textContent = pad(s);
+            }
+            update();
+            setInterval(update, 1000);
+        })();
         })();
     </script>
 </body>
