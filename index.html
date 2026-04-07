@@ -662,6 +662,107 @@
             .comparison-table .btn { min-height: 36px; padding: 0.5rem 0.75rem; font-size: 0.75rem; }
         }
 
+        /* === SCROLL-BASED POPUP === */
+        .scroll-popup-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 9997;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s;
+        }
+        .scroll-popup-overlay.active { display: flex; }
+        .scroll-popup {
+            background: #fff;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 90%;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            animation: slideUp 0.3s;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+        }
+        .scroll-popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            border: none;
+            background: none;
+            line-height: 1;
+        }
+        .scroll-popup-close:hover { color: var(--text); }
+        .scroll-popup .popup-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .scroll-popup h2 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text); }
+        .scroll-popup p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.2rem; }
+        .scroll-popup-bonus { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 0.75rem; margin: 1rem 0; font-size: 0.85rem; color: #065f46; }
+        .scroll-popup-form { display: flex; gap: 0.5rem; margin-top: 1rem; }
+        .scroll-popup-input { flex: 1; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; }
+        .scroll-popup-input:focus { outline: none; border-color: var(--primary); }
+        .scroll-popup-btn { padding: 0.75rem 1.5rem; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.95rem; white-space: nowrap; }
+        .scroll-popup-btn:hover { background: var(--primary-dark); }
+        .scroll-popup-thanks { display: none; color: var(--accent); font-weight: 600; margin-top: 0.5rem; }
+
+        /* === TIME-BASED POPUP === */
+        .time-popup-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 9996;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s;
+        }
+        .time-popup-overlay.active { display: flex; }
+        .time-popup {
+            background: #fff;
+            border-radius: 16px;
+            max-width: 480px;
+            width: 90%;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            animation: slideUp 0.3s;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+        }
+        .time-popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            border: none;
+            background: none;
+            line-height: 1;
+        }
+        .time-popup-close:hover { color: var(--text); }
+        .time-popup .popup-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .time-popup h2 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text); }
+        .time-popup p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.2rem; }
+        .time-popup-form { display: flex; gap: 0.5rem; margin-top: 1rem; }
+        .time-popup-input { flex: 1; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; }
+        .time-popup-input:focus { outline: none; border-color: var(--primary); }
+        .time-popup-btn { padding: 0.75rem 1.5rem; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.95rem; white-space: nowrap; }
+        .time-popup-btn:hover { background: #059669; }
+        .time-popup-thanks { display: none; color: var(--accent); font-weight: 600; margin-top: 0.5rem; }
+        .time-popup-urgency { background: #fef3c7; border: 1px solid #fde68a; border-radius: 8px; padding: 0.5rem 0.75rem; margin-top: 0.75rem; font-size: 0.8rem; color: #92400e; }
+
+        /* Mobile: popups full width */
+        @media(max-width:768px) {
+            .scroll-popup, .time-popup { padding: 1.5rem; width: 95%; max-width: 350px; }
+            .scroll-popup-form, .time-popup-form { flex-direction: column; }
+            .scroll-popup-btn, .time-popup-btn { width: 100%; }
+            .scroll-popup-input, .time-popup-input { min-height: 44px; }
+            .scroll-popup h2, .time-popup h2 { font-size: 1.1rem; }
+        }
+
     </style>
 
     <!-- JSON-LD Schema Markup for Google Rich Results -->
@@ -1133,7 +1234,7 @@
                     <div class="product-price">
                         <span class="price-original">$97</span>
                         <span class="price">$47</span>
-                        <a href="https://paypal.me/Dvenky007/47" target="_blank" class="btn btn-solid paypal-buy-btn" data-product="Cheat Sheet" data-price="47" data-utm-product="cheat-sheet">Buy Now</a>
+                        <a href="https://resist-grants-mounts-assignment.trycloudflare.com/checkout/47" target="_blank" class="btn btn-solid paypal-buy-btn" data-product="Cheat Sheet" data-price="47" data-utm-product="cheat-sheet">Buy Now</a>
                     </div>
                     <span class="last-sold" data-product="cheat-sheet">Last sold 23 min ago</span>
                 </div>
@@ -1149,7 +1250,7 @@
                     <div class="product-price">
                         <span class="price-original">$67</span>
                         <span class="price">$27</span>
-                        <a href="https://paypal.me/Dvenky007/27" target="_blank" class="btn btn-outline paypal-buy-btn" data-product="30 Visual Frameworks" data-price="27" data-utm-product="frameworks">Buy Now</a>
+                        <a href="https://resist-grants-mounts-assignment.trycloudflare.com/checkout/27" target="_blank" class="btn btn-outline paypal-buy-btn" data-product="30 Visual Frameworks" data-price="27" data-utm-product="frameworks">Buy Now</a>
                     </div>
                     <span class="last-sold" data-product="frameworks">Last sold 41 min ago</span>
                 </div>
@@ -1165,7 +1266,7 @@
                     <div class="product-price">
                         <span class="price-original">$67</span>
                         <span class="price">$27</span>
-                        <a href="https://paypal.me/Dvenky007/27" target="_blank" class="btn btn-outline paypal-buy-btn" data-product="25 Templates" data-price="27" data-utm-product="templates">Buy Now</a>
+                        <a href="https://resist-grants-mounts-assignment.trycloudflare.com/checkout/27" target="_blank" class="btn btn-outline paypal-buy-btn" data-product="25 Templates" data-price="27" data-utm-product="templates">Buy Now</a>
                     </div>
                     <span class="last-sold" data-product="templates">Last sold 1 hr ago</span>
                 </div>
@@ -1182,7 +1283,7 @@
                     <div class="product-price">
                         <span class="price-original">$197</span>
                         <span class="price">$97</span>
-                        <a href="https://paypal.me/Dvenky007/97" target="_blank" class="btn btn-outline paypal-buy-btn" data-product="Full Playbook" data-price="97" data-utm-product="playbook">Buy Now</a>
+                        <a href="https://resist-grants-mounts-assignment.trycloudflare.com/checkout/97" target="_blank" class="btn btn-outline paypal-buy-btn" data-product="Full Playbook" data-price="97" data-utm-product="playbook">Buy Now</a>
                     </div>
                     <span class="last-sold" data-product="playbook">Last sold 3 hrs ago</span>
                 </div>
@@ -1199,9 +1300,9 @@
             <div class="cross-sell-item">
                 <h4>Cheat Sheet + Templates</h4>
                 <p>Workflows + business infrastructure. The essential starter combo.</p>
-                <a href="https://paypal.me/Dvenky007/47" target="_blank" class="cross-sell-btn">Get Cheat Sheet - $47</a>
+                <a href="https://resist-grants-mounts-assignment.trycloudflare.com/checkout/47" target="_blank" class="cross-sell-btn">Get Cheat Sheet - $47</a>
                 <span style="margin: 0 0.3rem; color: var(--text-muted);">+</span>
-                <a href="https://paypal.me/Dvenky007/27" target="_blank" class="cross-sell-btn">Get Templates - $27</a>
+                <a href="https://resist-grants-mounts-assignment.trycloudflare.com/checkout/27" target="_blank" class="cross-sell-btn">Get Templates - $27</a>
             </div>
             <div class="cross-sell-item">
                 <h4>Complete Bundle -- Save $74</h4>
@@ -1349,8 +1450,8 @@
                     <tr>
                         <td></td>
                         <td><a href="#free-downloads" class="btn btn-outline">Get Free</a></td>
-                        <td><a href="https://paypal.me/Dvenky007/47" target="_blank" class="btn btn-solid paypal-buy-btn" data-product="Cheat Sheet" data-price="47">Buy Now</a></td>
-                        <td><a href="https://paypal.me/Dvenky007/97" target="_blank" class="btn btn-solid paypal-buy-btn" data-product="Full Playbook" data-price="97">Get Premium</a></td>
+                        <td><a href="https://resist-grants-mounts-assignment.trycloudflare.com/checkout/47" target="_blank" class="btn btn-solid paypal-buy-btn" data-product="Cheat Sheet" data-price="47">Buy Now</a></td>
+                        <td><a href="https://resist-grants-mounts-assignment.trycloudflare.com/checkout/97" target="_blank" class="btn btn-solid paypal-buy-btn" data-product="Full Playbook" data-price="97">Get Premium</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -1364,7 +1465,7 @@
             <span class="bundle-price">$127</span>
             <span class="bundle-savings">$228 value -- save $101 (44% off)</span>
         </div>
-        <a href="https://paypal.me/Dvenky007/127" target="_blank" class="btn btn-white" style="margin-top:1.5rem;" data-product="Ultimate Bundle" data-price="127" data-utm-product="bundle">Get the Ultimate Bundle</a>
+        <a href="https://resist-grants-mounts-assignment.trycloudflare.com/checkout/197" target="_blank" class="btn btn-white" style="margin-top:1.5rem;" data-product="Ultimate Bundle" data-price="127" data-utm-product="bundle">Get the Ultimate Bundle</a>
     </section>
 
     <section class="urgency">
@@ -1519,6 +1620,42 @@
                 </div>
             </form>
             <p class="exit-thank-you" id="exit-thank-you">Check your inbox! Free pack is on the way.</p>
+        </div>
+    </div>
+
+    <!-- Scroll-Based Popup (triggers at 40% scroll) -->
+    <div class="scroll-popup-overlay" id="scroll-popup">
+        <div class="scroll-popup">
+            <button class="scroll-popup-close" id="scroll-popup-close">&times;</button>
+            <div class="popup-icon">&#128640;</div>
+            <h2>You've Made It This Far -- Want the Full AI Playbook for Free?</h2>
+            <p>Get our exclusive 15-page "5-Day Digital Product Launch Blueprint" -- normally reserved for bundle buyers -- completely free.</p>
+            <div class="scroll-popup-bonus">&#9733; Includes: Notion template link + 20 bonus AI prompts + pricing calculator</div>
+            <form id="scroll-email-form">
+                <div class="scroll-popup-form">
+                    <input type="email" required id="scroll-email-input" class="scroll-popup-input" placeholder="your@email.com">
+                    <button type="submit" class="scroll-popup-btn">Send It Free</button>
+                </div>
+            </form>
+            <p class="scroll-popup-thanks" id="scroll-thank-you">Sent! Check your inbox in 2 minutes.</p>
+        </div>
+    </div>
+
+    <!-- Time-Based Popup (triggers after 30 seconds) -->
+    <div class="time-popup-overlay" id="time-popup">
+        <div class="time-popup">
+            <button class="time-popup-close" id="time-popup-close">&times;</button>
+            <div class="popup-icon">&#127881;</div>
+            <h2>Exclusive: Join Our AI Solopreneur List</h2>
+            <p>Get weekly tips, product drops, and early access to discounts. We share what actually works.</p>
+            <form id="time-email-form">
+                <div class="time-popup-form">
+                    <input type="email" required id="time-email-input" class="time-popup-input" placeholder="your@email.com">
+                    <button type="submit" class="time-popup-btn">Join the List</button>
+                </div>
+            </form>
+            <p class="time-popup-thanks" id="time-thank-you">You're in! Welcome to the community.</p>
+            <div class="time-popup-urgency">&#128293; 47 people joined this week -- launch spots fill quickly</div>
         </div>
     </div>
 
@@ -1790,6 +1927,8 @@
                     var signups = JSON.parse(localStorage.getItem('dp_signups') || '[]');
                     signups.push(signup);
                     localStorage.setItem('dp_signups', JSON.stringify(signups));
+                    // Send to inbox
+                    sendLeadToInbox(email, 'exit_intent_free_pack', 'exit_intent');
                     exitForm.style.display = 'none';
                     if (exitThankYou) exitThankYou.style.display = 'block';
                     // GA4: Track exit intent lead capture
@@ -1965,6 +2104,148 @@
             update();
             setInterval(update, 1000);
         })();
+        })();
+
+        // ============================================================
+        // SCROLL-BASED EMAIL CAPTURE POPUP (triggers at 40% scroll)
+        // ============================================================
+        (function() {
+            var overlay = document.getElementById('scroll-popup');
+            var closeBtn = document.getElementById('scroll-popup-close');
+            var form = document.getElementById('scroll-email-form');
+            var input = document.getElementById('scroll-email-input');
+            var thanks = document.getElementById('scroll-thank-you');
+            var shown = false;
+
+            if (!overlay || !form) return;
+
+            function showScrollPopup() {
+                if (shown) return;
+                var scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+                if (scrollPercent >= 0.4) {
+                    overlay.classList.add('active');
+                    shown = true;
+                    // Remove scroll listener after showing once
+                    window.removeEventListener('scroll', showScrollPopup);
+                }
+            }
+            window.addEventListener('scroll', showScrollPopup);
+
+            // Close button
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    overlay.classList.remove('active');
+                });
+            }
+
+            // Click outside to close
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) {
+                    overlay.classList.remove('active');
+                }
+            });
+
+            // Form submit
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var email = input.value;
+
+                // Store locally
+                var signup = {
+                    type: 'scroll_popup_signup',
+                    email: email,
+                    timestamp: new Date().toISOString()
+                };
+                var signups = JSON.parse(localStorage.getItem('dp_signups') || '[]');
+                signups.push(signup);
+                localStorage.setItem('dp_signups', JSON.stringify(signups));
+
+                // Send to inbox
+                sendLeadToInbox(email, 'scroll_popup_blueprint', 'scroll_trigger');
+
+                // GA4 tracking
+                if (typeof gtag === 'function') {
+                    gtag('event', 'generate_lead', {traffic_source: 'scroll_popup', signup_method: 'scroll_popup_blueprint'});
+                }
+
+                // Show thanks, hide form
+                form.style.display = 'none';
+                if (thanks) thanks.style.display = 'block';
+
+                // Auto-close after 2s
+                setTimeout(function() { overlay.classList.remove('active'); }, 2000);
+            });
+        })();
+
+        // ============================================================
+        // TIME-BASED EMAIL CAPTURE POPUP (triggers after 30 seconds)
+        // ============================================================
+        (function() {
+            var overlay = document.getElementById('time-popup');
+            var closeBtn = document.getElementById('time-popup-close');
+            var form = document.getElementById('time-email-form');
+            var input = document.getElementById('time-email-input');
+            var thanks = document.getElementById('time-thank-you');
+
+            if (!overlay || !form) return;
+
+            // Check if already submitted before (don't annoy return visitors)
+            var existing = JSON.parse(localStorage.getItem('dp_signups') || '[]');
+            var alreadySubmitted = existing.some(function(s) {
+                return s.type === 'time_popup_signup';
+            });
+
+            // Only show if they haven't already signed up via this popup
+            if (!alreadySubmitted) {
+                setTimeout(function() {
+                    overlay.classList.add('active');
+                }, 30000); // 30 seconds
+            }
+
+            // Close button
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    overlay.classList.remove('active');
+                });
+            }
+
+            // Click outside to close
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) {
+                    overlay.classList.remove('active');
+                }
+            });
+
+            // Form submit
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var email = input.value;
+
+                // Store locally
+                var signup = {
+                    type: 'time_popup_signup',
+                    email: email,
+                    timestamp: new Date().toISOString()
+                };
+                var signups = JSON.parse(localStorage.getItem('dp_signups') || '[]');
+                signups.push(signup);
+                localStorage.setItem('dp_signups', JSON.stringify(signups));
+
+                // Send to inbox
+                sendLeadToInbox(email, 'time_popup_newsletter', 'time_trigger');
+
+                // GA4 tracking
+                if (typeof gtag === 'function') {
+                    gtag('event', 'generate_lead', {traffic_source: 'time_popup', signup_method: 'time_popup_newsletter'});
+                }
+
+                // Show thanks, hide form
+                form.style.display = 'none';
+                if (thanks) thanks.style.display = 'block';
+
+                // Auto-close after 2s
+                setTimeout(function() { overlay.classList.remove('active'); }, 2000);
+            });
         })();
     </script>
 </body>
