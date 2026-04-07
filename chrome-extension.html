@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Chrome Extension - AI Workflow Assistant | Digital Pedia</title>
+  <meta name="description" content="Free Chrome extension with 12+ AI workflows. Automate emails, research, content creation, and more. Save hours every week.">
+  <meta property="og:title" content="Free AI Workflow Assistant Chrome Extension">
+  <meta property="og:description" content="12+ AI workflows right in your browser. Email drafting, summarizing, research, outreach, and more. Completely free.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f0f23; color: #e2e8f0; }
+    
+    .hero { text-align: center; padding: 80px 20px 60px; background: linear-gradient(135deg, #1a103a 0%, #0f2557 50%, #1a103a 100%); }
+    .hero h1 { font-size: 3em; font-weight: 800; background: linear-gradient(135deg, #a78bfa, #60a5fa, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; }
+    .hero .tagline { font-size: 1.3em; color: #94a3b8; max-width: 600px; margin: 0 auto 30px; }
+    .hero .free-badge { display: inline-block; background: linear-gradient(135deg, #10b981, #34d399); color: #fff; padding: 6px 20px; border-radius: 20px; font-size: 0.9em; font-weight: 600; margin-bottom: 20px; }
+    .download-btn { display: inline-block; background: linear-gradient(135deg, #a78bfa, #818cf8); color: #fff; padding: 16px 40px; border-radius: 30px; font-size: 1.2em; font-weight: 700; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(167, 139, 250, 0.4); }
+    .download-btn:hover { transform: scale(1.05); box-shadow: 0 6px 30px rgba(167, 139, 250, 0.6); }
+    
+    .features { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
+    .features h2 { text-align: center; font-size: 2.2em; font-weight: 700; margin-bottom: 50px; }
+    .features h2 span { background: linear-gradient(135deg, #a78bfa, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .feature-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 28px; transition: transform 0.2s, border-color 0.2s; }
+    .feature-card:hover { transform: translateY(-4px); border-color: rgba(167, 139, 250, 0.4); }
+    .feature-card .emoji { font-size: 2em; margin-bottom: 12px; }
+    .feature-card h3 { font-size: 1.1em; color: #f1f5f9; margin-bottom: 8px; }
+    .feature-card p { font-size: 0.95em; color: #94a3b8; line-height: 1.5; }
+    .feature-card .steps { margin-top: 16px; padding-left: 0; list-style: none; }
+    .feature-card .steps li { font-size: 0.85em; color: #cbd5e1; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .feature-card .steps li:last-child { border-bottom: none; }
+    .feature-card .steps li::before { content: "✓ "; color: #34d399; }
+    
+    .stats { display: flex; justify-content: center; gap: 60px; padding: 40px 20px; background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); margin: 40px 0; }
+    .stats .stat { text-align: center; }
+    .stats .stat-num { font-size: 2.5em; font-weight: 800; color: #a78bfa; }
+    .stats .stat-label { font-size: 0.9em; color: #94a3b8; margin-top: 4px; }
+    
+    .how-it-works { max-width: 800px; margin: 60px auto; padding: 0 20px; }
+    .how-it-works h2 { text-align: center; font-size: 2em; margin-bottom: 40px; }
+    .step { display: flex; gap: 24px; margin-bottom: 32px; align-items: flex-start; }
+    .step-num { min-width: 48px; height: 48px; background: linear-gradient(135deg, #8b5cf6, #6366f1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2em; font-weight: 700; }
+    .step h4 { font-size: 1.1em; color: #f1f5f9; margin-bottom: 4px; }
+    .step p { color: #94a3b8; font-size: 0.95em; }
+    
+    .pro-features { background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.05)); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 16px; padding: 32px; margin: 40px auto; max-width: 700px; text-align: center; }
+    .pro-features h3 { color: #fbbf24; margin-bottom: 12px; font-size: 1.3em; }
+    .pro-features p { color: #d97706; margin-bottom: 16px; }
+    .pro-features a { color: #fbbf24; text-decoration: underline; }
+    
+    .cta-section { text-align: center; padding: 80px 20px; }
+    .cta-section h2 { font-size: 2em; margin-bottom: 20px; }
+    
+    .back-link { display: inline-block; color: #94a3b8; text-decoration: none; margin-top: 20px; }
+    .back-link:hover { color: #a78bfa; }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="free-badge">FREE - No Account Required</div>
+    <h1>AI Workflow Assistant</h1>
+    <p class="tagline">A free Chrome extension with 12+ AI workflows to automate your busiest tasks. Email crafting, research, content creation, and more -- all from one click in your browser.</p>
+    <a href="https://github.com/Dsatya007/digital-pedia/tree/main/chrome-extension" class="download-btn" target="_blank">Install the Extension</a>
+    <p style="margin-top: 16px; font-size: 0.85em; color: #64748b;">Open-source | Chrome, Edge, Brave | 30 second install</p>
+  </div>
+  
+  <div class="stats">
+    <div class="stat"><div class="stat-num">12+</div><div class="stat-label">AI Workflows</div></div>
+    <div class="stat"><div class="stat-num">2 min</div><div class="stat-label">Avg Setup Time</div></div>
+    <div class="stat"><div class="stat-num">0</div><div class="stat-label">Permissions Abuse</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Free</div></div>
+  </div>
+  
+  <div class="features">
+    <h2>Everything <span>in one click</span></h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="emoji">📧</div>
+        <h3>Email Drafter</h3>
+        <p>Turn rough thoughts into polished professional emails in seconds.</p>
+        <ul class="steps"><li>Extract key points</li><li>Choose tone</li><li>Generate draft</li><li>One-click copy</li></ul>
+      </div>
+      <div class="feature-card">
+        <div class="emoji">📚</div>
+        <h3>Page Summarizer</h3>
+        <p>Summarize any webpage into key takeaways and bullet points.</p>
+        <ul class="steps"><li>Activate on any page</li><li>AI extracts main points</li><li>TL;DR with bullets</li><li>Copy or save</li></ul>
+      </div>
+      <div class="feature-card">
+        <div class="emoji">📝</div>
+        <h3>Blog Outline Generator</h3>
+        <p>Create SEO-optimized blog outlines from any topic.</p>
+        <ul class="steps"><li>Enter topic</li><li>AI analyzes intent</li><li>H2/H3 structure</li><li>Export to Docs</li></ul>
+      </div>
+      <div class="feature-card">
+        <div class="emoji">🤝</div>
+        <h3>Outreach Email Writer</h3>
+        <p>Craft personalized cold outreach that actually gets replies.</p>
+        <ul class="steps"><li>Research target</li><li>Personalize</li><li>3 variations</li><li>A/B test tracking</li></ul>
+      </div>
+      <div class="feature-card">
+        <div class="emoji">🎯</div>
+        <h3>Keyword Research</h3>
+        <p>Find untapped keyword opportunities in your niche.</p>
+        <ul class="steps"><li>Seed keyword</li><li>Long-tail variations</li><li>Filter by difficulty</li><li>Export CSV</li></ul>
+      </div>
+      <div class="feature-card">
+        <div class="emoji">💰</div>
+        <h3>Pricing Strategy Builder</h3>
+        <p>Build optimal pricing tiers for your digital products.</p>
+        <ul class="steps"><li>Product details</li><li>Competitor analysis</li><li>3-tier structure</li><li>Bundle strategies</li></ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="pro-features">
+    <h3>Pro Workflows Available</h3>
+    <p>Unlock Competitor Analysis, Data Extractor, Landing Page Copy, and 50+ more premium workflows with our full Digital Product Pack.</p>
+    <a href="https://dsatya007.github.io/digital-pedia/" target="_blank">Get the Full Pack</a>
+  </div>
+  
+  <div class="how-it-works">
+    <h2>How to Install</h2>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <h4>Download the Extension</h4>
+        <p>Get the source from our GitHub repository. Just clone or download the chrome-extension folder.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <h4>Load in Chrome</h4>
+        <p>Go to chrome://extensions, enable Developer Mode, click "Load unpacked," and select the folder.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        <h4>Start Using Workflows</h4>
+        <p>Click the extension icon in your toolbar. Search workflows, click to run -- that's it.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="cta-section">
+    <h2>Ready to Save Hours Every Week?</h2>
+    <a href="https://github.com/Dsatya007/digital-pedia/tree/main/chrome-extension" class="download-btn" target="_blank">Install Now - It's Free</a>
+    <br><br>
+    <a href="/" class="back-link">&larr; Back to Digital Pedia Home</a>
+  </div>
+</body>
+</html>
