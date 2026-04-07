@@ -74,9 +74,13 @@
         .product-category { font-size: 0.75rem; color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
         .product-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
         .product-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
-        .product-price { display: flex; align-items: center; gap: 1rem; }
+        .product-price { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
         .price { font-size: 1.5rem; font-weight: 800; }
         .price-free { color: #10b981; }
+        .price-original { text-decoration: line-through; color: #94a3b8; font-size: 1.1rem; font-weight: 500; }
+        .urgency-badge { display: inline-block; background: #fef3c7; color: #92400e; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .last-sold { display: block; color: var(--text-muted); font-size: 0.75rem; margin-top: 0.35rem; font-style: italic; }
+        .paypal-buy-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0.75rem 1.5rem; }
         .btn { display: inline-block; padding: 0.75rem 1.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; border: none; cursor: pointer; }
         .btn-solid { background: var(--primary); color: #fff; }
         .btn-solid:hover { background: var(--primary-dark); }
@@ -355,6 +359,67 @@
         .urgency-banner .flash {
             animation: blink 1s infinite;
         }
+
+        /* Order Bump Popup */
+        .order-bump-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 9998;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.2s;
+        }
+        .order-bump-overlay.active { display: flex; }
+        .order-bump-popup {
+            background: #fff;
+            border-radius: 16px;
+            max-width: 520px;
+            width: 90%;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            animation: slideUp 0.3s;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+        }
+        .order-bump-close {
+            position: absolute;
+            top: 0.75rem; right: 1rem;
+            font-size: 1.5rem; cursor: pointer;
+            color: var(--text-muted); border: none; background: none; line-height: 1;
+        }
+        .order-bump-title { font-size: 1.2rem; font-weight: 800; color: var(--text); margin-bottom: 0.5rem; }
+        .order-bump-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+        .order-bump-offer {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .order-bump-offer h4 { color: #065f46; font-size: 1rem; margin-bottom: 0.25rem; }
+        .order-bump-offer p { color: #047857; font-size: 0.85rem; margin-bottom: 0.5rem; }
+        .order-bump-price { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
+        .order-bump-original { text-decoration: line-through; color: #94a3b8; font-size: 0.9rem; }
+        .order-bump-actions { display: flex; gap: 0.75rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap; }
+        .order-bump-yes { background: var(--accent); color: #fff; padding: 0.75rem 2rem; border-radius: 8px; font-weight: 700; border: none; cursor: pointer; font-size: 1rem; }
+        .order-bump-yes:hover { background: #059669; }
+        .order-bump-skip { background: none; border: 1px solid var(--border); color: var(--text-muted); padding: 0.75rem 2rem; border-radius: 8px; font-size: 0.9rem; cursor: pointer; }
+        .order-bump-skip:hover { color: var(--text); border-color: var(--text); }
+
+        /* Cross-sell Section */
+        .cross-sell { padding: 3rem 2rem; background: var(--bg-alt); text-align: center; }
+        .cross-sell h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .cross-sell > p { color: var(--text-muted); margin-bottom: 2rem; }
+        .cross-sell-grid { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; max-width: 800px; margin: 0 auto; }
+        .cross-sell-item {
+            background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem;
+            flex: 1; min-width: 200px; max-width: 250px; text-align: left;
+        }
+        .cross-sell-item h4 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+        .cross-sell-item p { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.75rem; }
+        .cross-sell-btn { display: inline-block; padding: 0.5rem 1rem; background: var(--primary); color: #fff; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 600; }
 
         /* Exit Intent Popup */
         .exit-popup-overlay {
@@ -821,7 +886,7 @@
         "@type": "Offer",
         "url": "https://dsatya007.github.io/digital-pedia/",
         "priceCurrency": "USD",
-        "price": "147.00",
+        "price": "127.00",
         "availability": "https://schema.org/InStock",
         "priceReferenceCurrency": "USD",
         "listPrice": "201.00",
@@ -895,7 +960,7 @@
           "name": "What's included in the Digital Product Starter Bundle?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The bundle includes the AI Solopreneur Cheat Sheet ($47), 25 Business Templates ($27), 30 Visual Frameworks ($27), and the AI Solopreneur Playbook ($97). That's $201 worth of content for just $147 -- a $54 savings."
+            "text": "The bundle includes the AI Solopreneur Cheat Sheet ($47), 25 Business Templates ($27), 30 Visual Frameworks ($27), and the AI Solopreneur Playbook ($97). That's $201 worth of content for just $127 -- a $74 savings."
           }
         },
         {
@@ -1062,10 +1127,13 @@
                     <div class="product-category">eBook -- 42 Pages</div>
                     <h3>The AI Solopreneur Cheat Sheet</h3>
                     <p>50 copy-paste AI workflows with visual diagrams and pro tips. Saves 10+ hrs/week.</p>
+                    <div class="urgency-badge">&#128293; Only 12 left at this price</div>
                     <div class="product-price">
+                        <span class="price-original">$97</span>
                         <span class="price">$47</span>
                         <a href="https://paypal.me/Dvenky007/47" target="_blank" class="btn btn-solid paypal-buy-btn" data-product="Cheat Sheet" data-price="47" data-utm-product="cheat-sheet">Buy Now</a>
                     </div>
+                    <span class="last-sold" data-product="cheat-sheet">Last sold 23 min ago</span>
                 </div>
             </div>
 
@@ -1075,10 +1143,13 @@
                     <div class="product-category">Visual Guide</div>
                     <h3>30 Visual Frameworks</h3>
                     <p>Full-page visual frameworks from ideation to scaling.</p>
+                    <div class="urgency-badge">&#128293; Only 18 left at this price</div>
                     <div class="product-price">
+                        <span class="price-original">$67</span>
                         <span class="price">$27</span>
                         <a href="https://paypal.me/Dvenky007/27" target="_blank" class="btn btn-outline paypal-buy-btn" data-product="30 Visual Frameworks" data-price="27" data-utm-product="frameworks">Buy Now</a>
                     </div>
+                    <span class="last-sold" data-product="frameworks">Last sold 41 min ago</span>
                 </div>
             </div>
 
@@ -1088,10 +1159,13 @@
                     <div class="product-category">Templates Pack</div>
                     <h3>25 Business Templates</h3>
                     <p>Notion workspace, Google Sheets, and PDF for running a digital product business.</p>
+                    <div class="urgency-badge">&#128293; Only 15 left at this price</div>
                     <div class="product-price">
+                        <span class="price-original">$67</span>
                         <span class="price">$27</span>
                         <a href="https://paypal.me/Dvenky007/27" target="_blank" class="btn btn-outline paypal-buy-btn" data-product="25 Templates" data-price="27" data-utm-product="templates">Buy Now</a>
                     </div>
+                    <span class="last-sold" data-product="templates">Last sold 1 hr ago</span>
                 </div>
             </div>
 
@@ -1102,13 +1176,36 @@
                     <div class="product-category">Premium Guide</div>
                     <h3>The AI Solopreneur Playbook</h3>
                     <p>150+ page comprehensive guide with templates, frameworks, 90-day action plan, and community.</p>
+                    <div class="urgency-badge">&#128293; Only 8 left at this price</div>
                     <div class="product-price">
+                        <span class="price-original">$197</span>
                         <span class="price">$97</span>
                         <a href="https://paypal.me/Dvenky007/97" target="_blank" class="btn btn-outline paypal-buy-btn" data-product="Full Playbook" data-price="97" data-utm-product="playbook">Buy Now</a>
                     </div>
+                    <span class="last-sold" data-product="playbook">Last sold 3 hrs ago</span>
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <!-- Frequently Bought Together -->
+    <section class="cross-sell" id="cross-sell">
+        <h2>Frequently Bought Together</h2>
+        <p>Most customers pair these for maximum results</p>
+        <div class="cross-sell-grid">
+            <div class="cross-sell-item">
+                <h4>Cheat Sheet + Templates</h4>
+                <p>Workflows + business infrastructure. The essential starter combo.</p>
+                <a href="https://paypal.me/Dvenky007/47" target="_blank" class="cross-sell-btn">Get Cheat Sheet - $47</a>
+                <span style="margin: 0 0.3rem; color: var(--text-muted);">+</span>
+                <a href="https://paypal.me/Dvenky007/27" target="_blank" class="cross-sell-btn">Get Templates - $27</a>
+            </div>
+            <div class="cross-sell-item">
+                <h4>Complete Bundle -- Save $74</h4>
+                <p>All 4 products at launch pricing. Everything you need in one click.</p>
+                <a href="#bundle" class="cross-sell-btn" style="background: var(--accent);">&#128640; Get All 4 for $127</a>
+            </div>
         </div>
     </section>
 
@@ -1836,8 +1933,8 @@
             if (endStr && parseInt(endStr) > Date.now()) {
                 endTime = parseInt(endStr);
             } else {
-                // Set countdown to 48 hours from now
-                endTime = Date.now() + (48 * 60 * 60 * 1000);
+                // Set countdown to 24 hours from now (more urgent)
+                endTime = Date.now() + (24 * 60 * 60 * 1000);
                 localStorage.setItem('dp_countdown_end', endTime.toString());
             }
             var daysEl = document.getElementById('cd-days');
