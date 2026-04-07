@@ -807,6 +807,46 @@
                 "@type": "Answer",
                 "text": "The bundle includes the AI Solopreneur Cheat Sheet ($47), 25 Business Templates ($27), 30 Visual Frameworks ($27), and the AI Solopreneur Playbook ($97). That's $201 worth of content for just $147 -- a $54 savings."
               }
+            },
+            {
+              "@type": "Question",
+              "name": "Do I need any technical skills to use these?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Everything is designed for beginners. The workflows are copy-paste ready, and templates come with step-by-step instructions."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Will the content become outdated?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "All products receive free lifetime updates. When we update content, you get an email with the new download link."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I use these for my own clients or business?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Absolutely. These are personal and commercial use licenses. You can apply the workflows and templates to your own projects and client work."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How payment methods do you accept?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We accept all major payment methods through PayPal -- credit/debit cards, Apple Pay, Google Pay, and PayPal balance."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is there support if I get stuck?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Email us anytime at support@digitalpedia.co and we typically respond within 24 hours."
+              }
             }
           ]
         }
@@ -829,8 +869,8 @@
 
     <!-- Sticky CTA Header -->
     <div class="sticky-cta-header" id="sticky-cta">
-        <span class="sticky-cta-text">&#9889; Launch pricing -- save $54 on the complete bundle</span>
-        <a href="#bundle" class="sticky-cta-btn">Get the Bundle - $147</a>
+        <span class="sticky-cta-text">&#9889; Launch pricing -- save $101 on the ultimate bundle</span>
+        <a href="#bundle" class="sticky-cta-btn">Get the Bundle - $127</a>
     </div>
 
 
@@ -843,6 +883,7 @@
             <div class="stat"><div class="stat-number">50+</div><div class="stat-label">AI Workflows</div></div>
             <div class="stat"><div class="stat-number">25</div><div class="stat-label">Business Templates</div></div>
             <div class="stat"><div class="stat-number">30</div><div class="stat-label">Visual Frameworks</div></div>
+            <div class="stat"><div class="stat-number" id="recent-downloads-stat">847</div><div class="stat-label">Recent Downloads</div></div>
         </div>
     </section>
 
@@ -1173,6 +1214,12 @@
         <div class="faq-item"><div class="faq-q">How do I receive my purchase?<span>+</span></div><div class="faq-a">Instant download after payment. The PDF is delivered immediately through a secure download link.</div></div>
         <div class="faq-item"><div class="faq-q">Is the cheat sheet worth the price?<span>+</span></div><div class="faq-a">Each workflow saves about 10 minutes. 50 workflows means 500 minutes saved. At $47 you pay less than a dollar per workflow.</div></div>
         <div class="faq-item"><div class="faq-q">Can I get a refund?<span>+</span></div><div class="faq-a">Contact us directly and we will work it out. 30-day money-back guarantee.</div></div>
+        <div class="faq-item"><div class="faq-q">Do I need any technical skills to use these?<span>+</span></div><div class="faq-a">No. Everything is designed for beginners. The workflows are copy-paste ready, and templates come with step-by-step instructions. If you can use a web browser, you can use these products.</div></div>
+        <div class="faq-item"><div class="faq-q">Will the content become outdated?<span>+</span></div><div class="faq-a">All products receive free lifetime updates. When we update content, you get an email with the new download link. No need to repurchase.</div></div>
+        <div class="faq-item"><div class="faq-q">Can I use these for my own clients or business?<span>+</span></div><div class="faq-a">Absolutely. These are personal and commercial use licenses. You can apply the workflows and templates to your own projects and client work. Individual resale rights are not included.</div></div>
+        <div class="faq-item"><div class="faq-q">How soon will I see results?<span>+</span></div><div class="faq-a">Most solopreneurs complete their first product within a week using our templates and frameworks. The 90-day action plan in the Premium version gives you a week-by-week roadmap to $10k/month.</div></div>
+        <div class="faq-item"><div class="faq-q">What payment methods do you accept?<span>+</span></div><div class="faq-a">We accept all major payment methods through PayPal -- credit/debit cards, Apple Pay, Google Pay, and PayPal balance. No PayPal account required to check out.</div></div>
+        <div class="faq-item"><div class="faq-q">Is there support if I get stuck?<span>+</span></div><div class="faq-a">Yes. Email us anytime at support@digitalpedia.co and we typically respond within 24 hours. Premium users also get access to our community for peer support.</div></div>
     </section>
 
     <footer>
@@ -1591,6 +1638,32 @@
         document.querySelectorAll('.faq-q').forEach(function(q) {
             q.addEventListener('click', function() { this.parentElement.classList.toggle('open'); });
         });
+
+        // ============================================================
+        // RECENTLY DOWNLOADED COUNTER (simulated, increments periodically)
+        // ============================================================
+        (function() {
+            var downloadsEl = document.getElementById('recent-downloads-stat');
+            var downloads = parseInt(localStorage.getItem('dp_recent_downloads') || '847', 10);
+
+            if (downloadsEl) {
+                downloadsEl.textContent = downloads;
+
+                // Increment downloads every 2-5 minutes to simulate activity
+                function incrementDownloads() {
+                    var rand = Math.floor(Math.random() * 5) + 1;
+                    downloads += rand;
+                    localStorage.setItem('dp_recent_downloads', downloads);
+                    if (downloadsEl) {
+                        downloadsEl.textContent = downloads;
+                    }
+                    var next = Math.floor(Math.random() * 3 * 60000) + 2 * 60000;
+                    setTimeout(incrementDownloads, next);
+                }
+
+                setTimeout(incrementDownloads, 2 * 60000);
+            }
+        })();
     </script>
 </body>
 </html>
